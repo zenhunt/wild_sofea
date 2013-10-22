@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/addressbook.css"/>
+    <script type="text/javascript" src="js/modernizr.js"></script>
+    <meta charset=utf-8/>
+    <title>A wild address book application</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+
+        </header>
+        <article>
+            <h1>Address book</h1>
+            <p>This is a little address book. Search, find, add, edit and delete people as you like.</p>
+            <section id="search">
+                <form action="#" method="post">
+                    <fieldset>
+                        <ul>
+                            <li><label for="firstname">First name</label><input id="firstname" type="text" name="firstname" value=""></li>
+                            <li><label for="lastname">Last name</label><input id="lastname" type="text" name="lastname" value=""></li>
+                            <li><label for="email">Email address</label><input id="email" type="text" name="email" value=""></li>
+                            <li><label for="phone">Phone number</label><input id="phone" type="text" name="phone" value=""></li>
+                        </ul>
+                    </fieldset>
+                    <fieldset>
+                        <ul>
+                            <li><label for="country"></label><select id="country">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select></li>
+                            <li><label for="zipcode">Zipcode / city</label><input id="zipcode" type="text" name="zipcode" value=""><input id="city" type="text" name="city" value=""></li>
+                            <li><label for=""></label><input id="" type="text" name="" value=""></li>
+                            <li><label for=""></label><input id="" type="text" name="" value=""></li>
+                        </ul>
+                    </fieldset>
+                </form>
+            </section>
+            <section id="result">
+                <table class="left">
+                    <thead>
+                        <tr>
+                            <th><input id="selectAll" type="checkbox"></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input id="selectRowXXX" type="checkbox"></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </article>
+        <article id="credits">
+            <h1>Credits</h1>
+            <p>Created and maintained by some wise people from Flavia IT.</p>
+            <ul>
+                <li><a href="http://flavia-it.de">Flavia Homepage</a></li>
+                <li><a href="https://github.com/zenhunt/wild_sofea">Project repository @ github</a></li>
+                <li><a href="http://blog.flavia-it.de">Flavia Developers Blog</a></li>
+            </ul>
+        </article>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+@import "gradients";
+
+@font-face {
+  font-family: "Emperors";
+  src: url('../fonts/Emperors.eot');
+  src: url('../fonts/Emperors.woff') format("woff"), url('../fonts/Emperors.ttf') format("truetype");
+}
+
+
+// colors and fonts are definied up front
+// color variances should be calculated
+@basefont: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+@basecolor: #002b67;
+@textcolor: lighten(@basecolor, 70%);
+@formtextcolor: @basecolor;
+@shadowcolor: black;
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: @basefont;
+  color: @textcolor;
+  background: url(../img/black_denim.png) repeat scroll 0 0;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2em;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+a {
+  text-decoration: underline;
+  color: @textcolor;
+}
+
+h1, h2, h3 {
+  font-family: "Emperors", monospace;
+  font-weight: 300;
+  text-shadow: 2px 2px 2px @shadowcolor;
+  margin: 0;
+  padding: 0;
+}
+
+input {
+  background: lighten(@basecolor, 75%);
+  border: 1px solid @basecolor;
+  border-radius: 5px;
+  font-size: 0.75em;
+  margin: 0;
+  padding: 2px 5px;
+}
+article {
+  #gradient > .articleBackground();
+  padding: 10px 35px 10px;
+  margin: 20px 0;
+  border-radius: 15px;
+  box-shadow: 0 0 5px @shadowcolor;
+  form {
+    border-radius: 15px;
+    background: url(../img/transluent_pixel.png) repeat scroll 0 0;
+    box-shadow: 0 0 5px @shadowcolor;
+    fieldset {
+      border: none;
+      label {
+        color: @formtextcolor;
+        width: 150px;
+        display: inline-block;
+      }
+      input {
+        width: 230px;
+      }
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li {
+          margin: 5px 0;
+        }
+      }
+    }
+  }
+}
+
+// helper classes
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  width: 1000px;
+}
