@@ -12,9 +12,8 @@ module.exports = function(grunt) {
         less: {
             dev: {
                 options: {
-                    paths: ["app/less"],
-                    sourceMap: true
-                    //sourceMapFilename: 'addressbook.css.map'
+                    sourceMap: true,
+                    sourceMapRootpath: '../../'
                 },
                 files: {
                     "app/css/addressbook.css": "app/less/addressbook.less"
