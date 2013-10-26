@@ -1,0 +1,32 @@
+{
+  "name": "wild_sofea",
+  "version": "0.0.0",
+  "description": "This is a demo project do demonstrate a collection of tools for developing lean SOFEA applications.",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zenhunt/wild_sofea.git"
+  },
+  "keywords": [
+    "SOFEA",
+    "TSA",
+    "HTML5",
+    "LESS",
+    "CoffeeScript"
+  ],
+  "author": "Marko Wunderlich, Sven Reglitzki",
+  "license": "http://unlicense.org/",
+  "bugs": {
+    "url": "https://github.com/zenhunt/wild_sofea/issues"
+  },
+  "devDependencies": {
+    "grunt-bower-task": "~0.3.2",
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.5.3",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-less": "~0.8.1"
+  }
+}

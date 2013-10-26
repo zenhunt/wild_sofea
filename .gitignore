@@ -1,0 +1,14 @@
+# project files
+.idea
+*.iml
+
+# compiled sources
+dist
+.tmp
+app/css
+app/js
+app/lib
+
+# dependencies
+bower_components
+node_modules
