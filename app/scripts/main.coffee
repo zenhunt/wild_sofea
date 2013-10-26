@@ -1,3 +1,5 @@
-test = 10
-test2 = 20
-console.log "#{test}, #{test2}"
+app = angular.module 'addressbook', []
+
+app.controller 'testController', ['$scope', (scope) ->
+  scope.title = 'Address book'
+]

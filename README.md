@@ -16,8 +16,7 @@ Now you can install all project dependencies. Run the following command in the p
 
 Now you can execute the configured grunt tasks. The most important tasks are:
 
-* `grunt deps` - loads the project dependencies.
-* `grunt watch` - watches your file system for changes and compiles down your LESS and CoffeeScript files when changes occur.
+* `grunt dev` - runs all tasks which are needed to initialize the development mode and then start watching for changes.
 * `grunt test` - runs all your tests.
 * `grunt dist` - compiles down your HTML, LESS and CoffeeScript to the folder dist for production mode.
 * `grunt clean` - removes all compiled files

@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- build:style main -->
     <link rel="stylesheet" type="text/css" href="../.tmp/css/addressbook.css"/>
+    <!-- /build -->
+    <!-- build:script main -->
     <script type="text/javascript" src="lib/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../.tmp/js/main.js"></script>
+    <!-- /build -->
     <meta charset=utf-8/>
     <title>A wild address book application</title>
 </head>
-<body>
+<body ng-app="addressbook">
     <div class="container">
         <header>
 
         </header>
-        <article>
-            <h1>Address book</h1>
+        <article ng-controller="testController">
+            <h1>{{title}}</h1>
             <p>This is a little address book. Search, find, add, edit and delete people as you like.</p>
             <section id="search">
                 <form action="#" method="post">
