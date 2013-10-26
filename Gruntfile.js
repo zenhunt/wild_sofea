@@ -21,7 +21,6 @@ module.exports = function(grunt) {
             },
             dist: {
                 options: {
-                    paths: ["app/less"],
                     compress: true
                 },
                 files: {
@@ -29,15 +28,39 @@ module.exports = function(grunt) {
                 }
             }
         },
+        coffee: {
+            dev: {
+                options: {
+                    sourceMap: true
+                },
+                expand: true,
+                cwd: 'app/scripts',
+                src: '**/*.coffee',
+                dest: 'app/js',
+                ext: '.js'
+            },
+            dist: {
+                files: {
+                    'dist/js/main.js': 'app/scripts/**/*.coffee'
+                }
+            }
+        },
         watch: {
-            files: ['app/less/**/*.less'],
-            tasks: ['less:dev']
+            less: {
+                files: ['app/less/**/*.less'],
+                tasks: ['less:dev']
+            },
+            coffee: {
+                files: ['app/scripts/**/*.coffee'],
+                tasks: ['coffee:dev']
+            }
         },
         clean: ["app/css", "app/js", "dist"]
     });
 
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-clean');
 
