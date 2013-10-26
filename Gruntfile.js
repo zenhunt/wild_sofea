@@ -45,6 +45,27 @@ module.exports = function(grunt) {
                 }
             }
         },
+        karma: {
+            options: {
+                configFile: 'karma.conf.js'
+            },
+            dev: {
+            },
+            dist: {
+                singleRun: true,
+                autoWatch: false,
+                browsers: ['PhantomJS']
+            },
+            ci: {
+                singleRun: true,
+                autoWatch: false,
+                reporters: ['junit'],
+                junitReporter: {
+                    outputFile: 'test-results.xml'
+                },
+                browsers: ['PhantomJS']
+            }
+        },
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
@@ -105,6 +126,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-bower-task');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-coffee');
+    grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-html-build');
@@ -112,7 +134,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
 
     grunt.registerTask('dev', ['bower', 'copy:dev', 'coffee:dev', 'less:dev', 'watch']);
-    grunt.registerTask('test', ['bower']);
-    grunt.registerTask('dist', ['bower', 'less:dist', 'coffee:dist', 'uglify:dist', 'htmlbuild:dist', 'copy:dist']);
+    grunt.registerTask('test', ['karma:dev']);
+    grunt.registerTask('dist', ['bower', 'karma:dist', 'less:dist', 'coffee:dist', 'uglify:dist', 'htmlbuild:dist', 'copy:dist']);
+    grunt.registerTask('ci', ['bower', 'karma:ci', 'less:dist', 'coffee:dist', 'uglify:dist', 'htmlbuild:dist', 'copy:dist']);
 
 };

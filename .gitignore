@@ -2,12 +2,14 @@
 .idea
 *.iml
 
-# compiled sources
+# generated files
 dist
 .tmp
 app/css
 app/js
 app/lib
+test-results.xml
+
 
 # dependencies
 bower_components
