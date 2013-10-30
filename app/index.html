@@ -2,6 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" type="text/css" href="../.tmp/css/addressbook.css"/>
+    <script type="text/javascript" src="hacks/h5shivhack.js"></script>
     <script type="text/javascript" src="lib/modernizr/modernizr.js"></script>
     <meta charset=utf-8/>
     <title>A wild address book application</title>
@@ -17,41 +18,123 @@
             <section id="search">
                 <form action="#" method="post">
                     <fieldset>
-                        <ul>
+                        <ul class="left half">
                             <li><label for="firstname">First name</label><input id="firstname" type="text" name="firstname" value=""></li>
                             <li><label for="lastname">Last name</label><input id="lastname" type="text" name="lastname" value=""></li>
+                            <li><label for="country">Country</label><select id="country" name="country">
+                                <option>Iran</option>
+                                <option>Irak</option>
+                                <option>North Korea</option>
+                            </select></li>
+                            <li><label for="zipcode">Zipcode / city</label><input id="zipcode" type="text" name="zipcode" value="" class="verysmall"><input id="city" type="text" name="city" value="" class="small"></li>
+                            <li><label for="street">Street</label><input id="street" type="text" name="street" value=""></li>
+                        </ul>
+                        <ul class="left half">
                             <li><label for="email">Email address</label><input id="email" type="text" name="email" value=""></li>
                             <li><label for="phone">Phone number</label><input id="phone" type="text" name="phone" value=""></li>
-                        </ul>
-                    </fieldset>
-                    <fieldset>
-                        <ul>
-                            <li><label for="country"></label><select id="country">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
+                            <li><label for="skype">Skype</label><input id="skype" type="text" name="skype" value=""></li>
+                            <li><label for="social">Social</label><input id="social" type="text" name="social" value=""></li>
+                            <li><label for="group">Group</label><select id="group" name="group">
+                                <option>Friends</option>
+                                <option>Secret agents</option>
+                                <option>Work</option>
                             </select></li>
-                            <li><label for="zipcode">Zipcode / city</label><input id="zipcode" type="text" name="zipcode" value=""><input id="city" type="text" name="city" value=""></li>
-                            <li><label for=""></label><input id="" type="text" name="" value=""></li>
-                            <li><label for=""></label><input id="" type="text" name="" value=""></li>
                         </ul>
                     </fieldset>
                 </form>
             </section>
             <section id="result">
-                <table class="left">
+                <table>
+                    <caption><h2>Your addresses</h2></caption>
                     <thead>
                         <tr>
                             <th><input id="selectAll" type="checkbox"></th>
-                            <th></th>
-                            <th></th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Address</th>
+                            <th>Group</th>
+                            <th><button>Ad</button><button>Dl</button></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><input id="selectRowXXX" type="checkbox"></td>
-                            <td></td>
-                            <td></td>
+                            <td><input id="select0" type="checkbox"></td>
+                            <td>Heinz</td>
+                            <td>Hacker</td>
+                            <td>DE, 34119 Kassel, Hackstraße 42</td>
+                            <td>Secret Agent</td>
+                            <td><button>De</button></td>
+                        </tr>
+                        <tr id="details">
+                            <td colspan="5">
+                                <form action="#" method="post">
+                                    <fieldset>
+                                        <ul class="left half">
+                                            <li><label for="firstname">First name</label><input id="firstname" type="text" name="firstname" value=""></li>
+                                            <li><label for="lastname">Last name</label><input id="lastname" type="text" name="lastname" value=""></li>
+                                            <li><label for="country">Country</label><select id="country" name="country">
+                                                <option>Iran</option>
+                                                <option>Irak</option>
+                                                <option>North Korea</option>
+                                            </select></li>
+                                            <li><label for="zipcode">Zipcode / city</label><input id="zipcode" type="text" name="zipcode" value="" class="verysmall"><input id="city" type="text" name="city" value="" class="small"></li>
+                                            <li><label for="street">Street</label><input id="street" type="text" name="street" value=""></li>
+                                        </ul>
+                                        <ul class="left half">
+                                            <li><label for="email">Email address</label><input id="email" type="text" name="email" value=""></li>
+                                            <li><label for="phone">Phone number</label><input id="phone" type="text" name="phone" value=""></li>
+                                            <li><label for="skype">Skype</label><input id="skype" type="text" name="skype" value=""></li>
+                                            <li><label for="social">Social</label><input id="social" type="text" name="social" value=""></li>
+                                            <li><label for="group">Group</label><select id="group" name="group">
+                                                <option>Friends</option>
+                                                <option>Secret agents</option>
+                                                <option>Work</option>
+                                            </select></li>
+                                        </ul>
+                                    </fieldset>
+                                </form>
+                            </td>
+                            <td><button>Ed</button><br><button>Dl</button></td>
+                        </tr>
+                        <tr>
+                            <td><input id="select1" type="checkbox"></td>
+                            <td>Heinz</td>
+                            <td>Hacker</td>
+                            <td>DE, 34119 Kassel, Hackstraße 42</td>
+                            <td>Secret Agent</td>
+                            <td><button>De</button></td>
+                        </tr>
+                        <tr>
+                            <td><input id="select2" type="checkbox"></td>
+                            <td>Heinz</td>
+                            <td>Hacker</td>
+                            <td>DE, 34119 Kassel, Hackstraße 42</td>
+                            <td>Secret Agent</td>
+                            <td><button>De</button></td>
+                        </tr>
+                        <tr>
+                            <td><input id="select3" type="checkbox"></td>
+                            <td>Heinz</td>
+                            <td>Hacker</td>
+                            <td>DE, 34119 Kassel, Hackstraße 42</td>
+                            <td>Secret Agent</td>
+                            <td><button>De</button></td>
+                        </tr>
+                        <tr>
+                            <td><input id="select4" type="checkbox"></td>
+                            <td>Heinz</td>
+                            <td>Hacker</td>
+                            <td>DE, 34119 Kassel, Hackstraße 42</td>
+                            <td>Secret Agent</td>
+                            <td><button>De</button></td>
+                        </tr>
+                        <tr>
+                            <td><input id="select5" type="checkbox"></td>
+                            <td>Heinz</td>
+                            <td>Hacker</td>
+                            <td>DE, 34119 Kassel, Hackstraße 42</td>
+                            <td>Secret Agent</td>
+                            <td><button>De</button></td>
                         </tr>
                     </tbody>
                 </table>

@@ -1,11 +1,22 @@
 wild_sofea
 ==========
 
-S.O.F.E.A. in the wild - A demo for a single page app using html5, lesscss and angularjs...
+S.O.F.E.A. in the wild - A demo for a single page app using html5, lesscss, angularjs and coffeescript.
+
+## Preconditions and targets
+
+* small
+* highly maintainable codebase
+* html5 and javascript as bleeding edge as possible
+* Internet Exploder compatible down to version 8
+* self implemented crossbrowser code for old browsers only on css level
+* slick as hell
+* collection of best practices
+* lab environment style for us to be able to test stuff on a running codebase
 
 ## How to build this project
 
-Make shure you have installed [node.js](http://nodejs.org) and [grunt.js](http://gruntjs.com/).
+Make sure you have installed [node.js](http://nodejs.org) and [grunt.js](http://gruntjs.com/).
 Install grunt.jd:
 
     `npm install -g grunt-cli`

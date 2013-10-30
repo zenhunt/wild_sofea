@@ -75,6 +75,7 @@ module.exports = function(grunt) {
                 files: {
                     'dist/js/app.min.js': [
                         'app/lib/angular/angular.js',
+                        'app/hacks/h5shivhack.js', // must be loaded up front of modernizr
                         'app/lib/modernizr/modernizr.js',
                         '.tmp/js/main.js'
                     ]

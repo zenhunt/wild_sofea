@@ -1,13 +1,13 @@
 @import "gradients";
 
+// colors and fonts are definied up front
+// color variances should be calculated
 @font-face {
   font-family: "Emperors";
   src: url('../fonts/Emperors.eot');
   src: url('../fonts/Emperors.woff') format("woff"), url('../fonts/Emperors.ttf') format("truetype");
 }
 
-// colors and fonts are definied up front
-// color variances should be calculated
 @basefont: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 @basecolor: #002b67;
 @textcolor: lighten(@basecolor, 70%);
@@ -47,35 +47,68 @@ h1, h2, h3 {
   padding: 0;
 }
 
-input {
+input[type="text"] {
   background: lighten(@basecolor, 75%);
   border: 1px solid @basecolor;
   border-radius: 5px;
   font-size: 0.75em;
-  margin: 0;
+  padding: 2px 5px;
+  margin: 0 0 0 5px;
+}
+
+select {
+  background: lighten(@basecolor, 75%);
+  border: 1px solid @basecolor;
+  border-radius: 5px;
+  font-size: 0.75em;
+  margin-left: 5px;
   padding: 2px 5px;
 }
+
+button {
+  font-size: 0.8em;
+  border: 1px solid darken(@basecolor, 10%);;
+  box-shadow: 0 0 2px @shadowcolor;
+  #gradient > .buttonBackground();
+  color: @textcolor;
+  margin: 2px;
+  font-weight: bold;
+  border-radius: 5px;
+  width: 30px;
+  height: 30px;
+}
+
 article {
   #gradient > .articleBackground();
   padding: 10px 35px 10px;
   margin: 20px 0;
-  border-radius: 15px;
+  border-radius: 10px;
   box-shadow: 0 0 5px @shadowcolor;
   form {
-    border-radius: 15px;
+    border-radius: 10px;
     background: url(../img/transluent_pixel.png) repeat scroll 0 0;
     box-shadow: 0 0 5px @shadowcolor;
     fieldset {
       border: none;
+      padding: 10px 20px;
       label {
         color: @formtextcolor;
         width: 150px;
         display: inline-block;
+        margin-left: 15px;
       }
       input {
         width: 230px;
+        &.verysmall {
+          width: 60px;
+        }
+        &.small {
+          width: 153px;
+        }
       }
-
+      select {
+        width: 242px;
+      }
       ul {
         list-style: none;
         margin: 0;
@@ -86,11 +119,86 @@ article {
       }
     }
   }
+  table {
+    box-shadow: 0 0 5px @shadowcolor;
+    margin: 15px 0 0;
+    width: 100%;
+    border-radius: 10px;
+    border-collapse: collapse;
+    caption {
+      margin: 10px;
+    }
+    thead th {
+      #gradient > .tableHeadBackground();
+      color: @textcolor;
+      text-shadow: 0 0 1px @basecolor;
+      &:first-child {
+        border-radius: 10px 0 0 0;
+      }
+      &:last-child {
+        border-radius: 0 10px 0 0;
+        width: 70px;
+      }
+    }
+    tbody tr {
+      &:last-child td {
+        &:first-child {
+          border-radius: 0 0 0 10px;
+        }
+        &:last-child {
+          border-radius: 0 0 10px 0;
+        }
+      }
+      &:hover {
+        background: @textcolor;
+      }
+    }
+    th, td {
+      background: url(../img/transluent_pixel.png) repeat scroll 0 0;
+      padding: 5px 10px;
+      text-align: left;
+      color: @formtextcolor;
+      font-size: 0.8em;
+      &:last-child {
+        text-align: right;
+      }
+    }
+
+    tr#details {
+      border-bottom: 1px solid @shadowcolor;
+      border-top: 1px solid @shadowcolor;
+      background: @shadowcolor;
+      &:hover {
+        background: @shadowcolor;
+      }
+      td {
+        font-size: 1em;
+        &:last-child {
+          vertical-align: top;
+        }
+        form {
+          border-radius: 0;
+          background: none;
+          box-shadow: none;
+          label {
+            width: 117px;
+          }
+        }
+      }
+    }
+  }
 }
 
-// helper classes
+// css helper classes
 .container {
   margin-left: auto;
   margin-right: auto;
   width: 1000px;
 }
+
+.left { float: left; }
+.right { float: right; }
+.half { width: 50%; }
+.oneFourth { width: 25%; }
+.threeFourths { width: 75%; }
+.full { width: 100%; }
