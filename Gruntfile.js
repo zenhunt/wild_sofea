@@ -129,7 +129,7 @@ module.exports = function(grunt) {
             },
             git_push_tag: {
                 command: function() {
-                    return "git push CI-" + process.env.BUILD_ID
+                    return "git push --tags"
                 }
             }
         }
