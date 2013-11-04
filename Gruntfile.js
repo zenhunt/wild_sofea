@@ -120,7 +120,19 @@ module.exports = function(grunt) {
                 dest: 'dist'
             }
         },
-        clean: ["dist", ".tmp"]
+        clean: ["dist", ".tmp"],
+        shell: {
+            git_tag: {
+                command: function() {
+                    return "git tag -a CI-" + process.env.BUILD_ID + " -m 'Successfully built by CI.'"
+                }
+            },
+            git_push_tag: {
+                command: function() {
+                    return "git push CI-" + process.env.BUILD_ID
+                }
+            }
+        }
     });
 
     grunt.loadNpmTasks('grunt-bower-task');
@@ -132,10 +144,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-html-build');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-shell');
 
     grunt.registerTask('dev', ['bower', 'copy:dev', 'coffee:dev', 'less:dev', 'watch']);
     grunt.registerTask('test', ['karma:dev']);
     grunt.registerTask('dist', ['bower', 'karma:dist', 'less:dist', 'coffee:dist', 'uglify:dist', 'htmlbuild:dist', 'copy:dist']);
-    grunt.registerTask('ci', ['bower', 'karma:ci', 'less:dist', 'coffee:dist', 'uglify:dist', 'htmlbuild:dist', 'copy:dist']);
+    grunt.registerTask('ci', ['bower', 'karma:ci', 'less:dist', 'coffee:dist', 'uglify:dist', 'htmlbuild:dist', 'copy:dist', 'shell:git_tag', 'shell:git_push_tag']);
 
 };
