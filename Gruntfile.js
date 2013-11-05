@@ -1,5 +1,16 @@
 module.exports = function(grunt) {
 
+    function jsDependencies(root){
+        return [
+            '/hacks/h5shivhack.js',
+            '/lib/modernizr/modernizr.js',
+            '/lib/angular/angular.js',
+            '/lib/angular-route/angular-route.js'
+        ].map(function(dep) {
+            return root + dep;
+        })
+    }
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         bower: {
@@ -72,12 +83,9 @@ module.exports = function(grunt) {
             },
             dist: {
                 files: {
-                    'dist/js/app.min.js': [
-                        'app/lib/angular/angular.js',
-                        'app/hacks/h5shivhack.js', // must be loaded up front of modernizr
-                        'app/lib/modernizr/modernizr.js',
+                    'dist/js/app.min.js': jsDependencies('app').concat([
                         '.tmp/js/main.js'
-                    ]
+                    ])
                 }
             }
         },
@@ -89,9 +97,31 @@ module.exports = function(grunt) {
             coffee: {
                 files: ['app/scripts/**/*.coffee'],
                 tasks: ['coffee:dev']
+            },
+            copy: {
+                files: ['app/fonts/*', 'app/img/*', 'app/lib/**/*', 'app/views/**/*']
+            },
+            options: {
+                livereload: true
             }
         },
         htmlbuild: {
+            dev: {
+                src: 'app/app.html',
+                dest: '.tmp/app.html',
+                options: {
+                    relative: true,
+                    scripts: {
+                        main: jsDependencies('.tmp').concat([
+                            '.tmp/js/main.js',
+                            '.tmp/js/**/*.js'
+                        ])
+                    },
+                    styles: {
+                        main: '.tmp/css/addressbook.css'
+                    }
+                }
+            },
             dist: {
                 src: 'app/app.html',
                 dest: 'dist',
@@ -110,13 +140,13 @@ module.exports = function(grunt) {
             dev: {
                 expand: true,
                 cwd: 'app',
-                src: ['fonts/*', 'img/*'],
+                src: ['fonts/*', 'img/*', 'lib/**/*', 'views/**/*'],
                 dest: '.tmp'
             },
             dist: {
                 expand: true,
                 cwd: 'app',
-                src: ['fonts/*', 'img/*'],
+                src: ['fonts/*', 'img/*', 'views/**/*'],
                 dest: 'dist'
             }
         },
@@ -132,6 +162,15 @@ module.exports = function(grunt) {
                     return "git push --tags"
                 }
             }
+        },
+        connect: {
+            dev: {
+                options: {
+                    port: 9997,
+                    base: '.tmp',
+                    livereload: true
+                }
+            }
         }
     });
 
@@ -145,8 +184,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-shell');
+    grunt.loadNpmTasks('grunt-contrib-connect');
 
-    grunt.registerTask('dev', ['bower', 'copy:dev', 'coffee:dev', 'less:dev', 'watch']);
+    grunt.registerTask('dev', ['bower', 'copy:dev', 'coffee:dev', 'less:dev', 'htmlbuild:dev', 'connect:dev', 'watch']);
     grunt.registerTask('test', ['karma:dev']);
     grunt.registerTask('dist', ['bower', 'karma:dist', 'less:dist', 'coffee:dist', 'uglify:dist', 'htmlbuild:dist', 'copy:dist']);
     grunt.registerTask('ci', ['bower', 'karma:ci', 'less:dist', 'coffee:dist', 'uglify:dist', 'htmlbuild:dist', 'copy:dist', 'shell:git_tag', 'shell:git_push_tag']);
