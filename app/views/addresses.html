@@ -1,6 +1,6 @@
 <h1>Address book</h1>
 <p>This is a little address book. Search, find, add, edit and delete people as you like.</p>
-<section id="search" ng-controller="filterController">
+<section id="search">
     <form action="#" method="post">
         <fieldset>
             <ul class="left half">
@@ -15,11 +15,7 @@
                 <li><label for="phone">Phone number</label><input id="phone" type="text" name="phone" ng-model="filter.phone"></li>
                 <li><label for="skype">Skype</label><input id="skype" type="text" name="skype" ng-model="filter.skype"></li>
                 <li><label for="social">Social</label><input id="social" type="text" name="social" ng-model="filter.social"></li>
-                <li><label for="group">Group</label><select id="group" name="group" ng-options="g.id as g.name for g in groups" ng-model="filter.group">
-                    <option>Friends</option>
-                    <option>Secret agents</option>
-                    <option>Work</option>
-                </select></li>
+                <li><label for="group">Group</label><select id="group" name="group" ng-options="g.id as g.name for g in groups" ng-model="filter.group"></select></li>
             </ul>
         </fieldset>
     </form>

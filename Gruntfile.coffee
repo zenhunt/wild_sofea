@@ -1,11 +1,21 @@
 module.exports = (grunt) ->
-  jsDependencies = (root) ->
-    [
-      '/hacks/h5shivhack.js'
-      '/lib/modernizr/modernizr.js'
-      '/lib/angular/angular.js'
-      '/lib/angular-route/angular-route.js'
-    ].map (dep) -> root + dep
+
+  jsDependencies = [
+    '/hacks/h5shivhack.js'
+    '/lib/modernizr/modernizr.js'
+    '/lib/angular/angular.js'
+    '/lib/angular-route/angular-route.js'
+  ]
+
+  devCopySources = [
+    'fonts/*'
+    'img/*'
+    'lib/**/*'
+    'views/**/*'
+    'backend-mock/**/*.json',
+    'less/**/*',
+    'scripts/**/*.coffee'
+  ]
 
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
@@ -19,9 +29,10 @@ module.exports = (grunt) ->
       dev:
         options:
           sourceMap: true
-          sourceMapRootpath: '../../'
+          sourceMapRootpath: '../'
+          sourceMapBasepath: '.tmp/'
         files:
-          ".tmp/css/addressbook.css": "app/less/addressbook.less"
+          ".tmp/css/addressbook.css": ".tmp/less/addressbook.less"
       dist:
         options:
           compress: true
@@ -33,7 +44,7 @@ module.exports = (grunt) ->
         options:
           sourceMap: true
         expand: true
-        cwd: 'app/scripts'
+        cwd: '.tmp/scripts'
         src: '**/*.coffee'
         dest: '.tmp/js'
         ext: '.js'
@@ -63,23 +74,21 @@ module.exports = (grunt) ->
         '<%= grunt.template.today("yyyy-mm-dd") %> */'
       dist:
         files:
-          'dist/js/app.min.js': jsDependencies('app').concat ['.tmp/js/main.js']
+          'dist/js/app.min.js': jsDependencies.map((dep) -> "app/#{dep}").concat ['.tmp/js/main.js']
 
     watch:
       less:
-        files: ['app/less/**/*.less']
+        files: ['.tmp/less/**/*.less']
         tasks: ['less:dev']
       coffee:
-        files: ['app/scripts/**/*.coffee']
+        files: ['.tmp/scripts/**/*.coffee']
         tasks: ['coffee:dev']
       copy:
-        files: [
-          'app/fonts/*'
-          'app/img/*'
-          'app/lib/**/*'
-          'app/views/**/*'
-          'app/backend-mock/**/*.json'
-        ]
+        files: devCopySources.map (src) -> "app/#{src}"
+#        tasks: ['copy:dev'] TODO: break down into smaller tasks. this takes too long and also triggers coffee + less
+      htmlbuild:
+        files: ['app/app.html']
+        tasks: ['htmlbuild:dev']
       options:
         livereload: true
 
@@ -90,7 +99,7 @@ module.exports = (grunt) ->
         options:
           relative: true
           scripts:
-            main: jsDependencies('.tmp').concat ['.tmp/js/main.js', '.tmp/js/**/*.js']
+            main: jsDependencies.map((dep) -> ".tmp/#{dep}").concat ['.tmp/js/main.js', '.tmp/js/**/*.js']
           styles:
             main: '.tmp/css/addressbook.css'
       dist:
@@ -107,15 +116,9 @@ module.exports = (grunt) ->
       dev:
         expand: true
         cwd: 'app'
-        src: [
-          'fonts/*'
-          'img/*'
-          'lib/**/*'
-          'views/**/*'
-          'backend-mock/**/*.json'
-        ]
+        src: devCopySources
         dest: '.tmp'
-        rename: (dest, src) -> "#{dest}/#{src.replace(/backend-mock\//, '').replace(/\.json$/, '')}"
+        rename: (dest, src) -> "#{dest}/#{src.replace(/(backend-mock\/|\.json$)/g, '')}"
       dist:
         expand: true
         cwd: 'app'
