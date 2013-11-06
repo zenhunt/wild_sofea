@@ -1,7 +1,7 @@
 angular.module('addressbook')
   .controller 'filterController', ['countries', 'groups', '$scope', (countries, groups, scope) ->
-    scope.countries = countries.data
-    scope.groups = groups.data
+    scope.countries = countries
+    scope.groups = groups
     scope.filter =
       firstname: 'Heinz'
       country: 'DEU'

@@ -83,9 +83,9 @@ module.exports = (grunt) ->
       coffee:
         files: ['.tmp/scripts/**/*.coffee']
         tasks: ['coffee:dev']
-      copy:
-        files: devCopySources.map (src) -> "app/#{src}"
-#        tasks: ['copy:dev'] TODO: break down into smaller tasks. this takes too long and also triggers coffee + less
+#      copy: TODO: break down into smaller tasks. this takes too long and also triggers coffee + less
+#        files: devCopySources.map (src) -> "app/#{src}"
+#        tasks: ['copy:dev']
       htmlbuild:
         files: ['app/app.html']
         tasks: ['htmlbuild:dev']
