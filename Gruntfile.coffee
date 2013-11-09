@@ -151,6 +151,7 @@ module.exports = (grunt) ->
     connect:
       dev:
         options:
+          hostname: '*'
           port: 9997
           base: '.tmp'
           livereload: true
