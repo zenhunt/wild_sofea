@@ -12,10 +12,11 @@ module.exports = (grunt) ->
     'img/*'
     'lib/**/*'
     'views/**/*'
-    'backend-mock/**/*.json',
-    'less/**/*',
-    'scripts/**/*.coffee'
+    'backend-mock/**/*.json'
   ]
+
+  lessSources = 'less/**/*'
+  coffeeSources = 'scripts/**/*.coffee'
 
   grunt.initConfig
     pkg: grunt.file.readJSON 'package.json'
@@ -50,7 +51,7 @@ module.exports = (grunt) ->
         ext: '.js'
       dist:
         files:
-          '.tmp/js/main.js': 'app/scripts/**/*.coffee'
+          'dist/js/main.js': 'app/scripts/**/*.coffee'
 
     karma:
       options:
@@ -78,14 +79,14 @@ module.exports = (grunt) ->
 
     watch:
       less:
-        files: ['.tmp/less/**/*.less']
-        tasks: ['less:dev']
+        files: "app/#{lessSources}"
+        tasks: ['copy:dev_less', 'less:dev']
       coffee:
-        files: ['.tmp/scripts/**/*.coffee']
-        tasks: ['coffee:dev']
-#      copy: TODO: break down into smaller tasks. this takes too long and also triggers coffee + less
-#        files: devCopySources.map (src) -> "app/#{src}"
-#        tasks: ['copy:dev']
+        files: "app/#{coffeeSources}"
+        tasks: ['copy:dev_coffee', 'coffee:dev']
+      copy:
+        files: devCopySources.map (src) -> "app/#{src}"
+        tasks: ['copy:dev']
       htmlbuild:
         files: ['app/app.html']
         tasks: ['htmlbuild:dev']
@@ -119,6 +120,16 @@ module.exports = (grunt) ->
         src: devCopySources
         dest: '.tmp'
         rename: (dest, src) -> "#{dest}/#{src.replace(/(backend-mock\/|\.json$)/g, '')}"
+      dev_less:
+        expand: true
+        cwd: 'app'
+        src: lessSources
+        dest: '.tmp'
+      dev_coffee:
+        expand: true
+        cwd: 'app'
+        src: coffeeSources
+        dest: '.tmp'
       dist:
         expand: true
         cwd: 'app'
@@ -154,7 +165,10 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-shell'
   grunt.loadNpmTasks 'grunt-contrib-connect'
 
-  grunt.registerTask 'dev', ['bower', 'copy:dev', 'coffee:dev', 'less:dev', 'htmlbuild:dev', 'connect:dev', 'watch']
+  grunt.registerTask 'copy_dev', ['copy:dev', 'copy:dev_less', 'copy:dev_coffee']
+  grunt.registerTask 'compile_dev', ['coffee:dev', 'less:dev', 'htmlbuild:dev']
+  grunt.registerTask 'compile_dist', ['coffee:dist', 'less:dist', 'uglify', 'htmlbuild:dist']
+  grunt.registerTask 'dev', ['bower', 'copy_dev', 'compile_dev', 'connect:dev', 'watch']
   grunt.registerTask 'test', ['karma:dev']
-  grunt.registerTask 'dist', ['bower', 'karma:dist', 'less:dist', 'coffee:dist', 'uglify:dist', 'htmlbuild:dist', 'copy:dist']
-  grunt.registerTask 'ci', ['bower','karma:ci','less:dist','coffee:dist','uglify:dist','htmlbuild:dist','copy:dist','shell:git_tag','shell:git_push_tag']
+  grunt.registerTask 'dist', ['bower', 'compile_dist', 'copy:dist']
+  grunt.registerTask 'ci', ['dist','karma:ci','shell:git_tag','shell:git_push_tag']
