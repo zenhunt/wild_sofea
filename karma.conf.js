@@ -8,6 +8,8 @@ module.exports = function(config) {
         // list of files / patterns to load in the browser
         files: [
             'app/lib/angular/angular.js',
+            'app/lib/angular-mocks/angular-mocks.js',
+            'app/scripts/main.coffee',
             'app/scripts/**/*.coffee',
             'test/spec/**/*.coffee'
         ],
