@@ -51,7 +51,7 @@ module.exports = (grunt) ->
         ext: '.js'
       dist:
         files:
-          'dist/js/main.js': 'app/scripts/**/*.coffee'
+          'main.js': 'app/scripts/**/*.coffee'
 
     karma:
       options:
@@ -75,7 +75,7 @@ module.exports = (grunt) ->
         '<%= grunt.template.today("yyyy-mm-dd") %> */'
       dist:
         files:
-          'dist/js/app.min.js': jsDependencies.map((dep) -> "app/#{dep}").concat ['.tmp/js/main.js']
+          'dist/js/app.min.js': jsDependencies.map((dep) -> "app/#{dep}").concat ['main.js']
 
     watch:
       less:
@@ -136,7 +136,9 @@ module.exports = (grunt) ->
         src: ['fonts/*', 'img/*', 'views/**/*']
         dest: 'dist'
 
-    clean: ["dist", ".tmp"]
+    clean:
+      dist: ['main.js']
+      all: ["dist", ".tmp"]
 
     shell:
       git_tag:
@@ -167,7 +169,7 @@ module.exports = (grunt) ->
 
   grunt.registerTask 'copy_dev', ['copy:dev', 'copy:dev_less', 'copy:dev_coffee']
   grunt.registerTask 'compile_dev', ['coffee:dev', 'less:dev', 'htmlbuild:dev']
-  grunt.registerTask 'compile_dist', ['coffee:dist', 'less:dist', 'uglify', 'htmlbuild:dist']
+  grunt.registerTask 'compile_dist', ['coffee:dist', 'less:dist', 'uglify', 'htmlbuild:dist', 'clean:dist']
   grunt.registerTask 'dev', ['bower', 'copy_dev', 'compile_dev', 'connect:dev', 'watch']
   grunt.registerTask 'test', ['karma:dev']
   grunt.registerTask 'dist', ['bower', 'compile_dist', 'copy:dist']
