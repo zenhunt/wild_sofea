@@ -1,25 +1,18 @@
 <h1>Address book</h1>
 <p>This is a little address book. Search, find, add, edit and delete people as you like.</p>
-<section id="search">
-    <form action="#" method="post">
-        <fieldset>
-            <ul class="left half">
-                <li><label for="firstname">First name</label><input id="firstname" type="text" name="firstname" ng-model="filter.firstname"></li>
-                <li><label for="lastname">Last name</label><input id="lastname" type="text" name="lastname"  ng-model="filter.lastname"></li>
-                <li><label for="country">Country</label><select id="country" name="country" ng-model="filter.country" ng-options="c.code as c.name for c in countries"></select></li>
-                <li><label for="zipcode">Zipcode / city</label><input id="zipcode" type="text" name="zipcode"  ng-model="filter.zipcode" class="verysmall"><input id="city" type="text" name="city"  ng-model="filter.city" class="small"></li>
-                <li><label for="street">Street</label><input id="street" type="text" name="street" ng-model="filter.street"></li>
-            </ul>
-            <ul class="left half">
-                <li><label for="email">Email address</label><input id="email" type="text" name="email" ng-model="filter.email"></li>
-                <li><label for="phone">Phone number</label><input id="phone" type="text" name="phone" ng-model="filter.phone"></li>
-                <li><label for="skype">Skype</label><input id="skype" type="text" name="skype" ng-model="filter.skype"></li>
-                <li><label for="social">Social</label><input id="social" type="text" name="social" ng-model="filter.social"></li>
-                <li><label for="group">Group</label><select id="group" name="group" ng-options="g.id as g.name for g in groups" ng-model="filter.group"></select></li>
-            </ul>
-        </fieldset>
-    </form>
-</section>
+<form action="#" method="post">
+    <fieldset>
+        <ul class="full">
+            <li><label for="search">Search</label><input id="search" type="text" ng-model="filter.firstname"></li>
+        </ul>
+        <ul class="left half">
+            <li><label for="search_country">Country</label><select id="search_country" ng-model="filter.country" ng-options="c.code as c.name for c in countries"></select></li>
+        </ul>
+        <ul class="left half">
+            <li><label for="search_group">Group</label><select id="search_group" ng-options="g.id as g.name for g in groups" ng-model="filter.group"></select></li>
+        </ul>
+    </fieldset>
+</form>
 <section id="result">
     <table>
         <caption><h2>Your addresses</h2></caption>
