@@ -12,6 +12,7 @@ angular.module 'app', ['ngRoute', 'addressbook'],
       resolve:
         groups: httpGetWithInject 'groups'
         countries: httpGetWithInject 'countries'
+        addresses: httpGetWithInject 'addresses/list'
     .when '/credits',
       templateUrl: 'views/credits.html'
     .otherwise

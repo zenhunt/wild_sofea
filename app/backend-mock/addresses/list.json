@@ -1,0 +1,47 @@
+[
+    {
+        "forename": "Heinz",
+        "lastname": "Hacker",
+        "birthday": "1975-11-09T22:25:23.861Z",
+        "country": "Germany",
+        "zipcode": "34121",
+        "city": "Kassel",
+        "street": "Hackstraße 42",
+        "email": "heniz@hacker.de",
+        "phone": "1234567890",
+        "group": "Secret agents"
+    }, {
+        "forename": "Max",
+        "lastname": "Mustermann1",
+        "birthday": "1977-03-21T00:00:00.861Z",
+        "country": "Germany",
+        "zipcode": "34121",
+        "city": "Kassel",
+        "street": "Überwachungsstraße 23",
+        "email": "maxi@musti.de",
+        "phone": "0987654321",
+        "group": "Work"
+    }, {
+        "forename": "Max",
+        "lastname": "Mustermann2",
+        "birthday": "1978-03-21T00:00:00.861Z",
+        "country": "Germany",
+        "zipcode": "34121",
+        "city": "Kassel",
+        "street": "Überwachungsstraße 24",
+        "email": "maxi@musti.de",
+        "phone": "0987654321",
+        "group": "Work"
+    }, {
+        "forename": "Max",
+        "lastname": "Mustermann3",
+        "birthday": "1979-03-21T00:00:00.861Z",
+        "country": "Germany",
+        "zipcode": "34121",
+        "city": "Kassel",
+        "street": "Überwachungsstraße 25",
+        "email": "maxi@musti.de",
+        "phone": "0987654321",
+        "group": "Work"
+    }
+]
