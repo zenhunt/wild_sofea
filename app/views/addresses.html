@@ -33,7 +33,7 @@
             <td>{{addr.lastname}}</td>
             <td>{{addr.street}}, {{addr.zipcode}} {{addr.city}}, {{addr.country}}</td>
             <td>{{addr.group}}</td>
-            <td><button ng-click="toggleDetails(addr)" class="icon-cancel" ng-class="{'addr.details': 'icon-cancel', '!addr.details': 'icon-details'}"></button></td>
+            <td><button ng-click="toggleDetails(addr)" ng-class="{'icon-cancel': addr.details, 'icon-details': !addr.details}"></button></td>
         </tr>
         <tr class="details" ng-repeat-end ng-if="addr.details" ng-animate="toggle-details">
             <td colspan="5">
