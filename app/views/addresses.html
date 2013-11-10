@@ -23,7 +23,7 @@
             <th>Last Name</th>
             <th>Address</th>
             <th>Group</th>
-            <th><button>Ad</button><button>Dl</button></th>
+            <th><button class="icon-add"></button><button class="icon-delete"></button></th>
         </tr>
         </thead>
         <tbody>
@@ -33,7 +33,7 @@
             <td>{{addr.lastname}}</td>
             <td>{{addr.street}}, {{addr.zipcode}} {{addr.city}}, {{addr.country}}</td>
             <td>{{addr.group}}</td>
-            <td ng-click="toggleDetails(addr)"><button>De</button></td>
+            <td><button ng-click="toggleDetails(addr)" class="icon-cancel" ng-class="{'addr.details': 'icon-cancel', '!addr.details': 'icon-details'}"></button></td>
         </tr>
         <tr class="details" ng-repeat-end ng-if="addr.details" ng-animate="toggle-details">
             <td colspan="5">
@@ -54,7 +54,7 @@
                     </fieldset>
                 </form>
             </td>
-            <td><button>Ed</button><br><button>Dl</button></td>
+            <td><button class="icon-edit"></button><br><button class="icon-save"></button><br><button class="icon-delete"></button></td>
         </tr>
         </tbody>
     </table>
