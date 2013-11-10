@@ -1,6 +1,7 @@
 module.exports = (grunt) ->
 
   jsDependencies = [
+    '/lib/es5-shim/es5-shim.js'
     '/hacks/h5shivhack.js'
     '/lib/modernizr/modernizr.js'
     '/lib/angular/angular.js'
