@@ -70,13 +70,12 @@ button {
   font-size: 0.8em;
   border: 1px solid darken(@basecolor, 10%);;
   box-shadow: 0 0 2px @shadowcolor;
-  #gradient > .buttonBackground();
   color: @textcolor;
   margin: 2px;
   font-weight: bold;
   border-radius: 5px;
-  width: 30px;
-  height: 30px;
+  width: 33px;
+  height: 33px;
 }
 
 article {
@@ -138,7 +137,7 @@ article {
       }
       &:last-child {
         border-radius: 0 10px 0 0;
-        width: 70px;
+        width: 75px;
       }
     }
     tbody tr {
@@ -207,4 +206,28 @@ article {
   input {
     width:  673px;
   }
+}
+
+.icon-save {
+  #gradient > .button("../img/save.png");
+}
+
+.icon-add {
+  #gradient > .button("../img/add.png");
+}
+
+.icon-delete {
+  #gradient > .button("../img/trash.png");
+}
+
+.icon-cancel {
+  #gradient > .button("../img/cancel.png");
+}
+
+.icon-details {
+  #gradient > .button("../img/details.png");
+}
+
+.icon-edit {
+  #gradient > .button("../img/edit.png");
 }
