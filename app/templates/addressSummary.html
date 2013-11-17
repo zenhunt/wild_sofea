@@ -1,0 +1,6 @@
+<td><input type="checkbox"></td>
+<td>{{addr.forename}}</td>
+<td>{{addr.lastname}}</td>
+<td>{{addr.street}}, {{addr.zipcode}} {{addr.city}}, {{addr.country}}</td>
+<td>{{addr.group}}</td>
+<td><button ng-click="toggleDetails(addr)" ng-class="{'icon-cancel': addr.details, 'icon-details': !addr.details}"></button></td>

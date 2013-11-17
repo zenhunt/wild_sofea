@@ -13,6 +13,7 @@ module.exports = (grunt) ->
     'img/*'
     'lib/**/*'
     'views/**/*'
+    'templates/**/*'
     'backend-mock/**/*.json'
   ]
 

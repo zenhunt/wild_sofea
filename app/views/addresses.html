@@ -1,61 +1,34 @@
 <h1>Address book</h1>
 <p>This is a little address book. Search, find, add, edit and delete people as you like.</p>
-<form action="#" method="post">
+<form action="#" method="post" ng-controller="filterController">
     <fieldset>
         <ul class="full">
-            <li><label for="search">Search</label><input id="search" type="text" ng-model="filter.firstname"></li>
+            <li><label for="search">Search</label><input id="search" type="text" ng-model="filter.query"></li>
         </ul>
         <ul class="left half">
-            <li><label for="search_country">Country</label><select id="search_country" ng-options="c for c in filterCountries" ng-model="filter.country"></select></li>
+            <li><label for="search_country">Country</label><select id="search_country" ng-options="c for c in countries" ng-model="filter.country"></select></li>
         </ul>
         <ul class="left half">
-            <li><label for="search_group">Group</label><select id="search_group" ng-options="g for g in filterGroups" ng-model="filter.group"></select></li>
+            <li><label for="search_group">Group</label><select id="search_group" ng-options="g for g in groups" ng-model="filter.group"></select></li>
         </ul>
     </fieldset>
 </form>
 <section id="result">
-    <table>
+    <table ng-controller="listController">
         <caption><h2>Your addresses</h2></caption>
         <thead>
-        <tr>
-            <th><input id="selectAll" type="checkbox"></th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Address</th>
-            <th>Group</th>
-            <th><button class="icon-add"></button><button class="icon-delete"></button></th>
-        </tr>
+            <tr>
+                <th><input id="selectAll" type="checkbox"></th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Group</th>
+                <th><button class="icon-add"></button><button class="icon-delete"></button></th>
+            </tr>
         </thead>
         <tbody>
-        <tr ng-repeat-start="addr in addresses">
-            <td><input type="checkbox"></td>
-            <td>{{addr.forename}}</td>
-            <td>{{addr.lastname}}</td>
-            <td>{{addr.street}}, {{addr.zipcode}} {{addr.city}}, {{addr.country}}</td>
-            <td>{{addr.group}}</td>
-            <td><button ng-click="toggleDetails(addr)" ng-class="{'icon-cancel': addr.details, 'icon-details': !addr.details}"></button></td>
-        </tr>
-        <tr class="details" ng-repeat-end ng-if="addr.details" ng-animate="toggle-details">
-            <td colspan="5">
-                <form action="#" method="post">
-                    <fieldset>
-                        <ul class="left half">
-                            <li><label for="firstname">First name</label><input id="firstname" type="text" ng-model="addr.forename"></li>
-                            <li><label for="lastname">Last name</label><input id="lastname" type="text" name="lastname" ng-model="addr.lastname"></li>
-                            <li><label for="email">Email address</label><input id="email" type="text" ng-model="addr.email"></li>
-                            <li><label for="group">Group</label><select id="group" ng-options="g for g in editGroups" ng-model="addr.group"></select></li>
-                        </ul>
-                        <ul class="left half">
-                            <li><label for="country">Country</label><select id="country" name="country" ng-options="c for c in editCountries" ng-model="addr.country"></select></li>
-                            <li><label for="zipcode">Zipcode / city</label><input id="zipcode" type="text" class="verysmall" ng-model="addr.zipcode"><input id="city" type="text" class="small" ng-model="addr.city"></li>
-                            <li><label for="street">Street</label><input id="street" type="text" ng-model="addr.street"></li>
-                            <li><label for="phone">Phone number</label><input id="phone" type="text" ng-model="addr.phone"></li>
-                        </ul>
-                    </fieldset>
-                </form>
-            </td>
-            <td><button class="icon-edit"></button><br><button class="icon-save"></button><br><button class="icon-delete"></button></td>
-        </tr>
+            <tr address-summary ng-repeat-start="addr in addresses"></tr>
+            <tr address-details ng-repeat-end ng-if="addr.details" ng-animate="toggle-details"></tr>
         </tbody>
     </table>
 </section>
