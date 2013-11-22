@@ -6,10 +6,10 @@
             <li><label for="search">Search</label><input id="search" type="text" ng-model="filter.query"></li>
         </ul>
         <ul class="left half">
-            <li><label for="search_country">Country</label><select id="search_country" ng-options="c for c in countries" ng-model="filter.country"></select></li>
+            <li><label for="search_country">Country</label><select id="search_country" ng-options="c for c in countries" ng-model="filter.country"></select><span class="selectArrow"></span></li>
         </ul>
         <ul class="left half">
-            <li><label for="search_group">Group</label><select id="search_group" ng-options="g for g in groups" ng-model="filter.group"></select></li>
+            <li><label for="search_group">Group</label><select id="search_group" ng-options="g for g in groups" ng-model="filter.group"></select><span class="selectArrow"></span></li>
         </ul>
     </fieldset>
 </form>
@@ -23,12 +23,18 @@
                 <th>Last Name</th>
                 <th>Address</th>
                 <th>Group</th>
-                <th><button class="icon-add"></button><button class="icon-delete"></button></th>
+                <th class="last-child"><button class="icon-add"><div></div></button><button class="icon-delete"><div></div></button></th>
             </tr>
         </thead>
         <tbody>
             <tr address-summary ng-repeat-start="addr in addresses"></tr>
             <tr address-details ng-repeat-end ng-if="addr.details" ng-animate="toggle-details"></tr>
         </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="1">< ></td>
+                <td colspan="5" class="last-child">34 Addresses</td>
+            </tr>
+        </tfoot>
     </table>
 </section>

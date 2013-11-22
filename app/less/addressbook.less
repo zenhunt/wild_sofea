@@ -3,17 +3,29 @@
 
 // colors and fonts are definied up front
 // color variances should be calculated
+
+// special cool font, for all browsers :)
 @font-face {
   font-family: "Emperors";
   src: url('../fonts/Emperors.eot');
-  src: url('../fonts/Emperors.woff') format("woff"), url('../fonts/Emperors.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: "Emperors";
+  src: url('../fonts/Emperors.woff') format("woff");
+}
+
+@font-face {
+  font-family: "Emperors";
+  src: url('../fonts/Emperors.ttf') format("truetype");
 }
 
 @basefont: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 @basecolor: #002b67;
 @textcolor: lighten(@basecolor, 70%);
-@formtextcolor: @basecolor;
+@formtextcolor: darken(@basecolor, 5%);
 @shadowcolor: black;
+@gradientOut: rgb(44, 44, 44);
 
 body {
   margin: 0;
@@ -49,44 +61,99 @@ h1, h2, h3 {
 }
 
 input[type="text"] {
-  background: lighten(@basecolor, 75%);
+  background: lighten(@basecolor, 70%);
   border: 1px solid @basecolor;
   border-radius: 5px;
   font-size: 0.75em;
-  padding: 2px 5px;
+  padding: 1px 5px;
   margin: 0 0 0 5px;
 }
 
 select {
-  background: lighten(@basecolor, 75%);
+  background: lighten(@basecolor, 70%);
   border: 1px solid @basecolor;
   border-radius: 5px;
-  font-size: 0.75em;
+  font-size: 0.8em;
   margin-left: 5px;
-  padding: 2px 5px;
+  padding: 0;
+
+  // bye bye ugly arrow :P
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  text-indent: 0.01px;
+  text-overflow: '';
+  outline: none;
+
+  option {
+    &:hover {
+      background: url("../img/blue_transluent_pixel.png") repeat scroll 0 0;
+    }
+    &:checked {
+      background: url("../img/blue_transluent_pixel.png") repeat scroll 0 0;
+    }
+    background: lighten(@basecolor, 70%);
+  }
+}
+
+// style hack for select box
+span.selectArrow {
+  background: url("../img/select_arrow.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0); // rgba kills arrow in IE8 >:)
+  display: inline-block;
+  height: 10px;
+  margin-left: -17px;
+  width: 9px;
+  pointer-events: none;
 }
 
 button {
   font-size: 0.8em;
   border: 1px solid darken(@basecolor, 10%);;
   box-shadow: 0 0 2px @shadowcolor;
-  color: @textcolor;
   margin: 2px;
   font-weight: bold;
   border-radius: 5px;
   width: 33px;
   height: 33px;
+  #gradient > .twoColorGradient(desaturate(lighten(@basecolor, 20%), 70%), @gradientOut);
+  &:hover {
+    #gradient > .twoColorGradient(lighten(@basecolor, 65%), @gradientOut);
+  }
+  &:active {
+    #gradient > .twoColorGradient(desaturate(lighten(@basecolor, 20%), 70%), @shadowcolor);
+    box-shadow: inset 0 0 2px @shadowcolor;
+  }
+  div {
+    display: none;
+  }
+}
+
+nav {
+  background: fadeout(lighten(@basecolor, 65%), 80%);
+  border-radius: 10px 10px 0 0;
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 6px 20px;
+  border-top: 1px solid fadeout(lighten(@basecolor, 65%), 60%);
+  border-left: 1px solid fadeout(lighten(@basecolor, 65%), 60%);
+  border-right: 1px solid fadeout(lighten(@basecolor, 65%), 60%);
+  box-shadow: inset 0 0 2px @shadowcolor;
+  a {
+    padding: 0 10px;
+    text-decoration: none;
+  }
 }
 
 article {
-  #gradient > .articleBackground();
+  #gradient > .twoColorGradientWithImage("../img/texture2_trans.png", lighten(@basecolor, 65%), @shadowcolor);
   padding: 10px 35px 10px;
-  margin: 20px 0;
+  margin: 0;
   border-radius: 10px;
   box-shadow: 0 0 5px @shadowcolor;
   form {
     border-radius: 10px;
-    background: url(../img/transluent_pixel.png) repeat scroll 0 0;
+    background: url("../img/transluent_pixel.png") repeat scroll 0 0;
     box-shadow: 0 0 5px @shadowcolor;
     fieldset {
       border: none;
@@ -121,7 +188,7 @@ article {
   }
   table {
     box-shadow: 0 0 5px @shadowcolor;
-    margin: 15px 0 0;
+    margin: 15px 0;
     width: 100%;
     border-radius: 10px;
     border-collapse: collapse;
@@ -129,9 +196,11 @@ article {
       margin: 10px;
     }
     thead th {
-      #gradient > .tableHeadBackground();
+      #gradient > .twoColorGradient(lighten(@basecolor, 65%), @gradientOut);
+      border-bottom: 1px solid @shadowcolor;
       color: @textcolor;
-      text-shadow: 0 0 1px @basecolor;
+      text-shadow: 0 0 1px darken(@basecolor, 50%);
+      font-size: 1em;
       &:first-child {
         border-radius: 10px 0 0 0;
       }
@@ -140,21 +209,24 @@ article {
         width: 75px;
       }
     }
-    tbody tr {
-      &:last-child td {
-        &:first-child {
-          border-radius: 0 0 0 10px;
-        }
-        &:last-child {
-          border-radius: 0 0 10px 0;
-        }
+    tfoot td {
+      background: fadeout(@shadowcolor, 80%);
+      color: @textcolor;
+      border-top: 1px solid @shadowcolor;
+      &:first-child {
+        border-radius: 0 0 0 10px;
       }
+      &:last-child {
+        border-radius: 0 0 10px 0;
+      }
+    }
+    tbody tr {
       &:hover {
-        background: @textcolor;
+        background: fadeout(lighten(@basecolor, 65%), 70%);
       }
     }
     th, td {
-      background: url(../img/transluent_pixel.png) repeat scroll 0 0;
+      background: url("../img/transluent_pixel.png") repeat scroll 0 0;
       padding: 5px 10px;
       text-align: left;
       color: @formtextcolor;
@@ -167,11 +239,12 @@ article {
     tr.details {
       border-bottom: 1px solid @shadowcolor;
       border-top: 1px solid @shadowcolor;
-      background: @shadowcolor;
+      background: fadeout(@shadowcolor, 80%);
       &:hover {
-        background: @shadowcolor;
+        background: fadeout(@shadowcolor, 80%);
       }
       td {
+        background: none;
         font-size: 1em;
         &:last-child {
           vertical-align: top;
@@ -181,6 +254,7 @@ article {
           background: none;
           box-shadow: none;
           label {
+            color: @textcolor;
             width: 117px;
           }
         }
@@ -208,26 +282,39 @@ article {
   }
 }
 
+.button(@image) {
+  #gradient > .twoColorGradientWithImage(@image, desaturate(lighten(@basecolor, 20%), 70%), @gradientOut);
+  &:hover {
+    #gradient > .twoColorGradientWithImage(@image, lighten(@basecolor, 65%), @gradientOut);
+  }
+  &:active {
+    #gradient > .twoColorGradientWithImage(@image, desaturate(lighten(@basecolor, 20%), 70%), @shadowcolor);
+    box-shadow: inset 0 0 2px @shadowcolor;
+  }
+}
+
 .icon-save {
-  #gradient > .button("../img/save.png");
+  .button("../img/save.png");
 }
 
 .icon-add {
-  #gradient > .button("../img/add.png");
+  .button("../img/add.png");
 }
 
 .icon-delete {
-  #gradient > .button("../img/trash.png");
+  .button("../img/trash.png");
 }
 
 .icon-cancel {
-  #gradient > .button("../img/cancel.png");
+  .button("../img/cancel.png");
 }
 
 .icon-details {
-  #gradient > .button("../img/details.png");
+  .button("../img/details.png");
 }
 
 .icon-edit {
-  #gradient > .button("../img/edit.png");
+  .button("../img/edit.png");
 }
+
+@import "crossmixins";

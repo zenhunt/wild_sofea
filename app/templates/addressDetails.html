@@ -5,10 +5,10 @@
                 <li><label for="firstname">First name</label><input id="firstname" type="text" ng-model="addr.forename"></li>
                 <li><label for="lastname">Last name</label><input id="lastname" type="text" name="lastname" ng-model="addr.lastname"></li>
                 <li><label for="email">Email address</label><input id="email" type="text" ng-model="addr.email"></li>
-                <li><label for="group">Group</label><select id="group" ng-options="g for g in groups" ng-model="addr.group"></select></li>
+                <li><label for="group">Group</label><select id="group" ng-options="g for g in groups" ng-model="addr.group"></select><span class="selectArrow"></span></li>
             </ul>
             <ul class="left half">
-                <li><label for="country">Country</label><select id="country" name="country" ng-options="c for c in countries" ng-model="addr.country"></select></li>
+                <li><label for="country">Country</label><select id="country" name="country" ng-options="c for c in countries" ng-model="addr.country"></select><span class="selectArrow"></span></li>
                 <li><label for="zipcode">Zipcode / city</label><input id="zipcode" type="text" class="verysmall" ng-model="addr.zipcode"><input id="city" type="text" class="small" ng-model="addr.city"></li>
                 <li><label for="street">Street</label><input id="street" type="text" ng-model="addr.street"></li>
                 <li><label for="phone">Phone number</label><input id="phone" type="text" ng-model="addr.phone"></li>
@@ -16,4 +16,4 @@
         </fieldset>
     </form>
 </td>
-<td><button class="icon-edit"></button><br><button class="icon-save"></button><br><button class="icon-delete"></button></td>
+<td class="last-child"><button class="icon-edit"><div></div></button><br><button class="icon-save"><div></div></button><br><button class="icon-delete"><div></div></button></td>

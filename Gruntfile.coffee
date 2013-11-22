@@ -4,12 +4,14 @@ module.exports = (grunt) ->
     '/lib/es5-shim/es5-shim.js'
     '/hacks/h5shivhack.js'
     '/lib/modernizr/modernizr.js'
+    '/lib/jquery/jquery.js'
     '/lib/angular/angular.js'
     '/lib/angular-route/angular-route.js'
   ]
 
   devCopySources = [
     'fonts/*'
+    'hacks/*'
     'img/*'
     'lib/**/*'
     'views/**/*'

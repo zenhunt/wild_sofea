@@ -4,3 +4,129 @@
   filter: alpha(opacity=@ie_value);
   opacity: @value;
 }
+
+.no-cssgradients {
+  div.stylehack {
+    margin: 0;
+    // the gradient colors are not calculated automatically, but it works in IE8
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#B4D3FF',EndColorStr='#000000');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#B4D3FF',EndColorStr='#000000')";
+    article {
+      background: url("../img/texture2_trans.png") repeat scroll 0 0;
+      margin: 0;
+      table {
+        thead th {
+          filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#B4D3FF',EndColorStr='#2C2C2C');
+          -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#B4D3FF',EndColorStr='#2C2C2C')";
+          &.last-child {
+            width: 75px;
+          }
+        }
+        td.last-child {
+          text-align: right;
+        }
+
+        tbody tr {
+          &:hover {
+            background: url("../img/blue_transluent_pixel.png") repeat scroll 0 0;
+          }
+        }
+
+        tr.details {
+          background: none;
+          &:hover {
+            background: none;
+          }
+          td {
+            background: url("../img/black_transluent_pixel.png") repeat scroll 0 0;
+          }
+        }
+        tfoot td {
+          background: url("../img/black_transluent_pixel.png") repeat scroll 0 0;
+        }
+      }
+    }
+  }
+  .icon-save div {
+    background-image: url("../img/save.png");
+  }
+
+  .icon-add div {
+    background-image: url("../img/add.png");
+  }
+
+  .icon-delete div {
+    background-image: url("../img/trash.png");
+  }
+
+  .icon-cancel div {
+    background-image: url("../img/cancel.png");
+  }
+
+  .icon-details div {
+    background-image: url("../img/details.png");
+  }
+
+  .icon-edit div {
+    background-image: url("../img/edit.png");
+  }
+
+  button div {
+    width: 33px;
+    height: 33px;
+    margin-left: -8px;
+    margin-top: -1px;
+    outline: none;
+    display: block;
+  }
+}
+
+.no-boxshadow {
+  article {
+    border: 1px solid @shadowcolor;
+    form {
+      border: 1px solid @shadowcolor;
+    }
+    table {
+      border-collapse: separate;
+      border-spacing: 0;
+      border: 1px solid @shadowcolor;
+      tr.details td {
+        border-top: 1px solid @shadowcolor;
+        border-bottom: 1px solid @shadowcolor;
+        form {
+          border: none;
+        }
+        &.last-child {
+          vertical-align: top;
+        }
+      }
+    }
+  }
+  button {
+    filter: progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=90, Strength=1), progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=180, Strength=1), progid:DXImageTransform.Microsoft.gradient(startColorStr='#486185',EndColorStr='#2C2C2C');
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=90, Strength=1), progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=180, Strength=1), progid:DXImageTransform.Microsoft.gradient(startColorStr='#486185',EndColorStr='#2C2C2C')";
+    &:hover {
+      filter: progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=90, Strength=1), progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=180, Strength=1), progid:DXImageTransform.Microsoft.gradient(startColorStr='#B4D3FF',EndColorStr='#2C2C2C');
+      -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=90, Strength=1), progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=180, Strength=1), progid:DXImageTransform.Microsoft.gradient(startColorStr='#B4D3FF',EndColorStr='#2C2C2C')";
+    }
+    &:active {
+      filter: progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=90, Strength=1), progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=180, Strength=1), progid:DXImageTransform.Microsoft.gradient(startColorStr='#486185',EndColorStr='#000000');
+      -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=90, Strength=1), progid:DXImageTransform.Microsoft.Shadow(color='#2C2C2C', Direction=180, Strength=1), progid:DXImageTransform.Microsoft.gradient(startColorStr='#486185',EndColorStr='#000000')";
+    }
+    &.close {
+      filter: none;
+    }
+  }
+
+  nav {
+    background: url("../img/blue_transluent_pixel.png") repeat scroll 0 0;
+    border-top: 1px solid lighten(@basecolor, 65%);
+    border-left: 1px solid lighten(@basecolor, 65%);
+    border-right: 1px solid lighten(@basecolor, 65%);
+    a {
+      padding: 0 10px;
+      text-decoration: none;
+    }
+  }
+}
