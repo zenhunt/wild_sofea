@@ -4,9 +4,13 @@ angular.module('addressbook')
       query: ''
       country: countries.all[0]
       group: groups.all[0]
-      fields: ['forename', 'lastname', 'email', 'phone', 'street', 'zipcode', 'city']
 
     scope.filter = filter
     scope.countries = countries.all
     scope.groups = groups.all
+    scope.runFilter = -> addresses.filter(
+      query: filter.query
+      country: if filter.country == countries.all[0] then '' else filter.country
+      group: if filter.group == groups.all[0] then '' else filter.group
+    )
   ]

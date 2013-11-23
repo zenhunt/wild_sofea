@@ -1,12 +1,11 @@
 angular.module('addressbook')
   .directive 'editableField', ->
     restrict: 'A'
-    scope: {
+    scope:
       for: '@'
       text: '@'
       editable: '@'
       label: '@'
-    }
     transclude: true
     template:
       '<label for="{{for}}">{{label}}</label>' +

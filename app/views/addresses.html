@@ -27,8 +27,8 @@
             </tr>
         </thead>
         <tbody>
-            <tr address-summary ng-repeat-start="addr in addresses"></tr>
-            <tr address-details ng-repeat-end ng-if="addr.details" ng-animate="toggle-details"></tr>
+            <tr address-summary ng-repeat-start="addr in getAddresses()"></tr>
+            <tr address-details ng-repeat-end ng-if="addr.details" ng-animate="toggle-details" addr="addr" delete="delete(addr.id)"></tr>
         </tbody>
         <tfoot>
             <tr>
