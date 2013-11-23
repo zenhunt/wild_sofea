@@ -3,10 +3,10 @@ angular.module('addressbook')
     service =
       fields: ['forename', 'lastname', 'email', 'phone', 'street', 'zipcode', 'city']
       filter: (filter) -> null
-
-    $http.get('addresses/list').then (res) ->
-      service.all = res.data
-      service.filtered = angular.copy service.all
+      loadAll: ->
+        $http.get('addresses/list').then (res) ->
+          service.all = res.data
+          service.filtered = angular.copy service.all
 
     service
   ]

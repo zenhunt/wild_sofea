@@ -7,6 +7,7 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
+            'app/lib/jquery/jquery.js',
             'app/lib/angular/angular.js',
             'app/lib/angular-mocks/angular-mocks.js',
             'app/scripts/main.coffee',

@@ -7,17 +7,23 @@ describe 'groups', ->
   beforeEach ->
     module 'addressbook'
 
-    inject (_groups_, $injector) ->
+    inject (_groups_, _$httpBackend_) ->
       groups = _groups_
-      $httpBackend = $injector.get '$httpBackend'
+      $httpBackend = _$httpBackend_
 
     $httpBackend.when('GET', 'groups/list').respond allGroups
 
-  it 'should asynchronously load all groups', ->
-    expect(groups.all).not.toBeDefined()
-    $httpBackend.flush()
-    expect(groups.all).toBe allGroups
+  describe 'loadAll', ->
 
-  it 'should initialize the selectable groups with all retrieved groups except the first one', ->
-    $httpBackend.flush()
-    expect(groups.selectable.length).toEqual allGroups.length - 1
+    it 'should asynchronously load all groups', ->
+      groups.loadAll()
+
+      expect(groups.all).not.toBeDefined()
+      $httpBackend.flush()
+      expect(groups.all).toBe allGroups
+
+    it 'should initialize the selectable groups with all retrieved groups except the first one', ->
+      groups.loadAll()
+
+      $httpBackend.flush()
+      expect(groups.selectable.length).toEqual allGroups.length - 1

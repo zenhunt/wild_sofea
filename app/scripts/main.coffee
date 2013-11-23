@@ -6,9 +6,9 @@ angular.module 'app', ['ngRoute', 'addressbook'],
     .when '/addresses',
       templateUrl: 'views/addresses.html'
       resolve:
-        groupsData: ['groups', (groups) -> groups.all]
-        countriesData: ['countries', (countries) -> countries.all]
-        addressesData: ['addresses', (addresses) -> addresses.all]
+        groupsData: ['groups', (groups) -> groups.loadAll()]
+        countriesData: ['countries', (countries) -> countries.loadAll()]
+        addressesData: ['addresses', (addresses) -> addresses.loadAll()]
     .when '/credits',
       templateUrl: 'views/credits.html'
     .otherwise
