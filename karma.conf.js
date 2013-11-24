@@ -10,13 +10,23 @@ module.exports = function(config) {
             'app/lib/jquery/jquery.js',
             'app/lib/angular/angular.js',
             'app/lib/angular-mocks/angular-mocks.js',
+            'app/templates/**/*.html',
             'app/scripts/main.coffee',
             'app/scripts/**/*.coffee',
             'test/spec/**/*.coffee'
         ],
 
         preprocessors: {
+            'app/templates/**/*.html': ['ng-html2js'],
             '**/*.coffee': ['coffee']
+        },
+
+        ngHtml2JsPreprocessor: {
+            // strip this from the file path
+            stripPrefix: 'app/',
+            // setting this option will create only a single module that contains templates
+            // from all the files, so you can load them all with module('foo')
+            moduleName: 'templates'
         },
 
         coffeePreprocessor: {
@@ -74,6 +84,7 @@ module.exports = function(config) {
             'karma-jasmine',
             'karma-chrome-launcher',
             'karma-phantomjs-launcher',
+            'karma-ng-html2js-preprocessor',
             'karma-coffee-preprocessor',
             'karma-junit-reporter'
         ]

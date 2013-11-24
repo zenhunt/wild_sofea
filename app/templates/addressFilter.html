@@ -1,0 +1,11 @@
+<fieldset>
+    <ul class="full">
+        <li><label for="query">Search</label><input id="query" type="text" ng-model="filter.query"></li>
+    </ul>
+    <ul class="left half">
+        <li><label for="search_country">Country</label><select id="search_country" ng-options="c for c in countries" ng-model="filter.country"></select><span class="selectArrow"></span></li>
+    </ul>
+    <ul class="left half">
+        <li><label for="search_group">Group</label><select id="search_group" ng-options="g for g in groups" ng-model="filter.group"></select><span class="selectArrow"></span></li>
+    </ul>
+</fieldset>

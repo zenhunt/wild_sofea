@@ -14,6 +14,9 @@
                 <li editable-field for="group" label="Group" text="{{addr.group}}" editable="{{edit}}">
                     <select id="group" ng-options="g for g in groups" ng-model="addr.group"></select><span class="selectArrow"></span>
                 </li>
+                <li editable-field for="birthday" label="Birthday" text="{{addr.birthday}}" editable="{{edit}}">
+                    <input id="birthday" type="text" ng-model="addr.birthday">
+                </li>
             </ul>
             <ul class="left half">
                 <li editable-field for="country" label="Country" text="{{addr.country}}" editable="{{edit}}">

@@ -91,6 +91,19 @@ describe 'addresses', ->
       expect(filtered.length).toEqual 1
       expect(filtered[0].field2).toEqual 'test1'
 
+    it 'should filter case insensitively by query', ->
+      filtered = addresses.filter query: 'Test1'
+      expect(filtered.length).toEqual 1
+      expect(filtered[0].field2).toEqual 'test1'
+
+    it 'should filter by query and all query tokens must be contained in at least one field', ->
+      filtered = addresses.filter query: '1970 test2'
+      expect(filtered.length).toEqual 1
+      expect(filtered[0].field2).toEqual 'test2'
+
+      filtered = addresses.filter query: '1970 test1'
+      expect(filtered.length).toEqual 0
+
     it 'should accept "" for query', ->
       filtered = addresses.filter query: ''
       expect(filtered.length).toEqual 3
