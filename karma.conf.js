@@ -13,7 +13,7 @@ module.exports = function(config) {
             'app/templates/**/*.html',
             'app/scripts/main.coffee',
             'app/scripts/**/*.coffee',
-            'test/spec/**/*.coffee'
+            'test/**/*.coffee'
         ],
 
         preprocessors: {

@@ -6,12 +6,12 @@
         <caption><h2>Your addresses</h2></caption>
         <thead>
             <tr>
-                <th><input id="selectAll" type="checkbox"></th>
+                <th><input type="checkbox" ng-click="selectAll()" ng-checked="allSelected()"></th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Address</th>
                 <th>Group</th>
-                <th class="last-child"><button class="icon-add"><div></div></button><button class="icon-delete"><div></div></button></th>
+                <th class="last-child"><button class="icon-add"><div></div></button><button class="icon-delete" ng-click="delete()"><div></div></button></th>
             </tr>
         </thead>
         <tbody>
@@ -21,7 +21,7 @@
         <tfoot>
             <tr>
                 <td colspan="1">< ></td>
-                <td colspan="5" class="last-child">{{getAddresses().length}} Addresses</td>
+                <td colspan="5" class="last-child">{{getAddresses().length}} of {{totalCount()}} Addresses</td>
             </tr>
         </tfoot>
     </table>

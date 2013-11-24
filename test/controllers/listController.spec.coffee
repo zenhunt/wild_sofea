@@ -10,6 +10,9 @@ describe 'listController', ->
     addresses =
       filtered: [{id: 0}, {id: 1}, {id: 2}]
       all: [{id: 0}, {id: 1}, {id: 2}, {id: 3}]
+      delete: jasmine.createSpy 'delete'
+      selectAll: jasmine.createSpy 'selectAll'
+      allSelected: jasmine.createSpy 'allSelected'
     $controller 'listController',
       $scope: scope,
       addresses: addresses
@@ -34,21 +37,31 @@ describe 'listController', ->
       scope.toggleDetails addresses.filtered[0]
       expect(addresses.filtered[0].details).toBe false
 
+  describe 'scope.totalCount()', ->
+
+    it 'should return the number of all addresses', ->
+      expect(scope.totalCount()).toEqual addresses.all.length
+
   describe 'scope.delete(id)', ->
 
-    it 'should delete the address from the filtered addresses', ->
-      scope.delete(0)
-      expect(addresses.filtered.length).toEqual 2
-      expect(addresses.filtered).toEqual [{id: 1}, {id: 2}]
+    it 'should delegate to addresses.delete(id)', ->
+      scope.delete 0
+      expect(addresses.delete).toHaveBeenCalledWith 0
 
-    it 'should delete the address from all addresses', ->
-      scope.delete(1)
-      expect(addresses.all.length).toEqual 3
-      expect(addresses.all).toEqual [{id: 0}, {id: 2}, {id: 3}]
+  describe 'scope.delete()', ->
 
-    it 'should be able to delete multiple addresses', ->
-      scope.delete([0, 2])
-      expect(addresses.filtered.length).toEqual 1
-      expect(addresses.all.length).toEqual 2
-      expect(addresses.filtered).toEqual [{id: 1}]
-      expect(addresses.all).toEqual [{id: 1}, {id: 3}]
+    it 'should delegate to addresses.delete()', ->
+      scope.delete()
+      expect(addresses.delete).toHaveBeenCalled()
+
+  describe 'scope.selectAll()', ->
+
+    it 'should delegate to addresses.selectAll()', ->
+      scope.selectAll()
+      expect(addresses.selectAll).toHaveBeenCalled()
+
+  describe 'scope.allSelected()', ->
+
+    it 'should delegate to addresses.allSelected()', ->
+      scope.allSelected()
+      expect(addresses.allSelected).toHaveBeenCalled()

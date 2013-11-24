@@ -15,4 +15,29 @@ angular.module('addressbook')
           res.data.forEach (addr, idx) -> addr.id = idx
           service.all = res.data
           service.filtered = angular.copy service.all
+      delete: (id) ->
+        if id?
+          idx = 0
+          while idx < service.all.length
+            service.filtered.splice idx, 1 if service.filtered[idx] && service.filtered[idx].id == id
+            return service.all.splice idx, 1 if service.all[idx].id == id
+            idx++
+        else
+          indexes = []
+          service.filtered.forEach (addr, idx) ->
+            if addr.selected
+              idx -= indexes.length
+              indexes.push idx
+              while idx < service.all.length
+                if service.all[idx].id == addr.id
+                  console.log 'deleted'
+                  service.all.splice idx, 1
+                  break
+                idx++
+          indexes.forEach (idx) -> service.filtered.splice idx, 1
+      selectAll: ->
+        allSelected = service.allSelected()
+        service.filtered.forEach (addr) -> addr.selected = !allSelected
+      allSelected: ->
+        service.filtered.every (addr) -> addr.selected
   ]
