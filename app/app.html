@@ -12,9 +12,9 @@
 <div class="container" ng-app="app">
     <header>
         <!--TODO: could move somewhere else-->
-        <nav>
-            <a href="#/addresses">addresses</a>
-            <a href="#/credits">credits</a>
+        <nav ng-controller="navController">
+            <a href="#/addresses" ng-class="{active: isActive('/addresses')}">addresses</a>
+            <a href="#/credits" ng-class="{active: isActive('/credits')}">credits</a>
         </nav>
     </header>
     <div class="stylehack">
