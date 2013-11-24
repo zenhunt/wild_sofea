@@ -30,7 +30,6 @@ angular.module('addressbook')
               indexes.push idx
               while idx < service.all.length
                 if service.all[idx].id == addr.id
-                  console.log 'deleted'
                   service.all.splice idx, 1
                   break
                 idx++

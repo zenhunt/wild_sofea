@@ -2,41 +2,41 @@
     <form action="#" method="post">
         <fieldset>
             <ul class="left half">
-                <li editable-field for="forename" label="First name" text="{{addr.forename}}" editable="{{edit}}">
-                    <input id="forename" type="text" ng-model="addr.forename">
+                <li editable-field for="forename" label="First name" text="{{addressClone.forename}}" editable="{{editing}}">
+                    <input id="forename" type="text" ng-model="addressClone.forename">
                 </li>
-                <li editable-field for="lastname" label="Last name" text="{{addr.lastname}}" editable="{{edit}}">
-                    <input id="lastname" type="text" ng-model="addr.lastname">
+                <li editable-field for="lastname" label="Last name" text="{{addressClone.lastname}}" editable="{{editing}}">
+                    <input id="lastname" type="text" ng-model="addressClone.lastname">
                 </li>
-                <li editable-field for="email" label="Email address" text="{{addr.email}}" editable="{{edit}}">
-                    <input id="email" type="text" ng-model="addr.email">
+                <li editable-field for="email" label="Email address" text="{{addressClone.email}}" editable="{{editing}}">
+                    <input id="email" type="text" ng-model="addressClone.email">
                 </li>
-                <li editable-field for="group" label="Group" text="{{addr.group}}" editable="{{edit}}">
-                    <select id="group" ng-options="g for g in groups" ng-model="addr.group"></select><span class="selectArrow"></span>
+                <li editable-field for="group" label="Group" text="{{addressClone.group}}" editable="{{editing}}">
+                    <select id="group" ng-options="g for g in groups" ng-model="addressClone.group"></select><span class="selectArrow"></span>
                 </li>
-                <li editable-field for="birthday" label="Birthday" text="{{addr.birthday}}" editable="{{edit}}">
-                    <input id="birthday" type="text" ng-model="addr.birthday">
+                <li editable-field for="birthday" label="Birthday" text="{{addressClone.birthday}}" editable="{{editing}}">
+                    <input id="birthday" type="text" ng-model="addressClone.birthday">
                 </li>
             </ul>
             <ul class="left half">
-                <li editable-field for="country" label="Country" text="{{addr.country}}" editable="{{edit}}">
-                    <select id="country" name="country" ng-options="c for c in countries" ng-model="addr.country"></select><span class="selectArrow"></span>
+                <li editable-field for="country" label="Country" text="{{addressClone.country}}" editable="{{editing}}">
+                    <select id="country" name="country" ng-options="c for c in countries" ng-model="addressClone.country"></select><span class="selectArrow"></span>
                 </li>
-                <li editable-field for="zipcode" label="Zipcode / city" text="{{addr.zipcode}}" editable="{{edit}}">
-                    <input id="zipcode" type="text" class="verysmall" ng-model="addr.zipcode"><input id="city" type="text" class="small" ng-model="addr.city">
+                <li editable-field for="zipcode" label="Zipcode / city" text="{{addressClone.zipcode}}" editable="{{editing}}">
+                    <input id="zipcode" type="text" class="verysmall" ng-model="addressClone.zipcode"><input id="city" type="text" class="small" ng-model="addressClone.city">
                 </li>
-                <li editable-field for="street" label="Street" text="{{addr.street}}" editable="{{edit}}">
-                    <input id="street" type="text" ng-model="addr.street">
+                <li editable-field for="street" label="Street" text="{{addressClone.street}}" editable="{{editing}}">
+                    <input id="street" type="text" ng-model="addressClone.street">
                 </li>
-                <li editable-field for="phone" label="Phone number" text="{{addr.phone}}" editable="{{edit}}">
-                    <input id="phone" type="text" ng-model="addr.phone">
+                <li editable-field for="phone" label="Phone number" text="{{addressClone.phone}}" editable="{{editing}}">
+                    <input id="phone" type="text" ng-model="addressClone.phone">
                 </li>
             </ul>
         </fieldset>
     </form>
 </td>
 <td class="last-child">
-    <button class="icon-edit" ng-hide="edit" ng-click="edit = true" title="edit"><div></div></button><br>
-    <button class="icon-save" ng-show="edit" ng-click="edit = false" title="save"><div></div></button><br>
+    <button class="icon-edit" ng-hide="editing" ng-click="edit()" title="edit"><div></div></button><br>
+    <button class="icon-save" ng-show="editing" ng-click="save()" title="save"><div></div></button><br>
     <button class="icon-delete" title="delete" ng-click="delete()"><div></div></button>
 </td>
