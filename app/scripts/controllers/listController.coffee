@@ -12,4 +12,12 @@ angular.module('addressbook')
     scope.selectAll = addresses.selectAll
     scope.allSelected = addresses.allSelected
     scope.totalCount = -> addresses.all.length
+    scope.toggleAdd = ->
+      scope.adding = !scope.adding
+      scope.toAdd = {} if scope.adding
+    scope.add = ->
+      scope.toAdd.id = addresses.all.length
+      addresses.all.push scope.toAdd
+      addresses.filter()
+      scope.toAdd = {}
   ]

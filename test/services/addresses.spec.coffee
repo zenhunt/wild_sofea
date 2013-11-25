@@ -60,7 +60,7 @@ describe 'addresses', ->
       addresses.loadAll()
       $httpBackend.flush()
 
-    describe 'filter', ->
+    describe 'filter(filter)', ->
 
       it 'should save the filtered addresses in the field "filtered"', ->
         filtered = addresses.filter({})
@@ -110,6 +110,14 @@ describe 'addresses', ->
       it 'should accept "" for query', ->
         filtered = addresses.filter query: ''
         expect(filtered.length).toEqual 3
+
+    describe 'filter()', ->
+
+      it 'should rerun the last filter', ->
+        filter = query: '1970'
+        addresses.filter filter
+        filtered = addresses.filter()
+        expect(filtered.length).toEqual 1
 
     describe 'delete(id)', ->
 

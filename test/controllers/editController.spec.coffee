@@ -45,3 +45,8 @@ describe 'listController', ->
       scope.save()
       expect(scope.addr.forename).toEqual 'test1'
       expect(scope.editing).toBe false
+
+    it 'should call scope.onSave(), if defined', ->
+      scope.onSave = jasmine.createSpy 'onSave'
+      scope.save()
+      expect(scope.onSave).toHaveBeenCalled()

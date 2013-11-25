@@ -1,12 +1,14 @@
 angular.module('addressbook')
   .factory 'addresses', ['$http', ($http) ->
+    cachedFilter = null
     service =
       fields: ['forename', 'lastname', 'email', 'phone', 'street', 'zipcode', 'city']
       filter: (filter) ->
+        cachedFilter = filter || cachedFilter
         service.filtered = service.all.filter (addr) ->
-          (!filter.country || addr.country == filter.country) &&
-          (!filter.group || addr.group == filter.group) &&
-          (!filter.query || filter.query.split(' ').every (token) ->
+          (!cachedFilter.country || addr.country == cachedFilter.country) &&
+          (!cachedFilter.group || addr.group == cachedFilter.group) &&
+          (!cachedFilter.query || cachedFilter.query.split(' ').every (token) ->
               Object.keys(addr).some (field) ->
                 addr[field].toString().match new RegExp(".*#{token}.*", 'i')
           )

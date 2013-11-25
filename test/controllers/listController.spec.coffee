@@ -13,6 +13,7 @@ describe 'listController', ->
       delete: jasmine.createSpy 'delete'
       selectAll: jasmine.createSpy 'selectAll'
       allSelected: jasmine.createSpy 'allSelected'
+      filter: jasmine.createSpy 'runFilter'
     $controller 'listController',
       $scope: scope,
       addresses: addresses
@@ -65,3 +66,42 @@ describe 'listController', ->
     it 'should delegate to addresses.allSelected()', ->
       scope.allSelected()
       expect(addresses.allSelected).toHaveBeenCalled()
+
+  describe 'toggleAdd()', ->
+
+    it 'should set scope.adding to true if it was falsy', ->
+      scope.toggleAdd()
+      expect(scope.adding).toBe true
+
+    it 'should set scope.adding to false if it was truthy', ->
+      scope.adding = true
+      scope.toggleAdd()
+      expect(scope.adding).toBe false
+
+    it 'should set scope.toAdd = {} if scope.adding was falsy', ->
+      scope.toggleAdd()
+      expect(scope.toAdd).toEqual {}
+
+  describe 'add()', ->
+
+    it 'should add the newly added address to the list of all addresses', ->
+      scope.toggleAdd()
+      scope.add()
+      expect(addresses.all.length).toEqual 5
+
+    it 'should refilter all addresses', ->
+      scope.toggleAdd()
+      scope.add()
+      expect(addresses.filter).toHaveBeenCalled()
+
+    it 'should set the id', ->
+      scope.toggleAdd()
+      toAdd = scope.toAdd
+      scope.add()
+      expect(toAdd.id).toEqual 4
+
+    it 'should set toAdd to a new object', ->
+      scope.toggleAdd()
+      toAdd = scope.toAdd
+      scope.add()
+      expect(scope.toAdd).not.toBe toAdd

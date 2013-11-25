@@ -4,7 +4,8 @@ angular.module('addressbook')
     scope:
       addr: '='
       delete: '&'
-      save: '&'
+      onSave: '&'
+      add: '@'
     templateUrl: 'templates/addressDetails.html'
     controller: 'editController'
     compile: ($element) -> $element.addClass 'details'

@@ -8,6 +8,7 @@ angular.module('addressbook')
     scope.save = ->
       angular.extend scope.addr, scope.addressClone
       scope.editing = false
+      scope.onSave() if scope.onSave
     scope.edit = ->
       createClone()
       scope.editing = true

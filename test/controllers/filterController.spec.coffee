@@ -14,6 +14,7 @@ describe 'filterController', ->
       all: ['all', 'g1']
     addresses =
       all: [{}, {}, {}]
+      filter: jasmine.createSpy 'runFilter'
     scope = $rootScope.$new()
     $controller 'filterController',
       $scope: scope,
@@ -28,3 +29,9 @@ describe 'filterController', ->
   it 'should fill scope.filter with default group and country', ->
     expect(scope.filter.country).toBeDefined()
     expect(scope.filter.group).toBeDefined()
+
+  describe 'scope.runFilter', ->
+
+    it 'should delegate to addresses.filter()', ->
+      scope.runFilter()
+      expect(addresses.filter).toHaveBeenCalled()
