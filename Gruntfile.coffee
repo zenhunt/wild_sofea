@@ -137,7 +137,7 @@ module.exports = (grunt) ->
       dist:
         expand: true
         cwd: 'app'
-        src: ['fonts/*', 'img/*', 'views/**/*']
+        src: ['fonts/*', 'img/*', 'views/**/*', 'templates/**/*']
         dest: 'dist'
 
     clean:
