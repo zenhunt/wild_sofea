@@ -55,7 +55,7 @@ module.exports = (grunt) ->
         ext: '.js'
       dist:
         files:
-          'main.js': 'app/scripts/**/*.coffee'
+          'main.js': ['app/scripts/main.coffee','app/scripts/**/*.coffee']
 
     karma:
       options:
@@ -159,6 +159,12 @@ module.exports = (grunt) ->
           port: 9997
           base: '.tmp'
           livereload: true
+      dist:
+        options:
+          hostname: '*'
+          port: 9996
+          base: 'dist'
+          keepalive: true
 
   grunt.loadNpmTasks 'grunt-bower-task'
   grunt.loadNpmTasks 'grunt-contrib-less'
