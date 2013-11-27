@@ -5,14 +5,14 @@ S.O.F.E.A. in the wild - A demo for a single page app using html5, lesscss, angu
 
 ## Preconditions and targets
 
-* small
-* highly maintainable codebase
-* html5 and javascript as bleeding edge as possible
-* Internet Exploder compatible down to version 8
-* self implemented crossbrowser code for old browsers only on css level
-* slick as hell
-* collection of best practices
-* lab environment style for us to be able to test stuff on a running codebase
+*small
+*highly maintainable code base
+*html, css and javascript as bleeding edge as possible
+*Internet Exploder compatible down to version 8
+*cross browser code only on css level, if possible
+*slick as hell >:)
+*collection of best practices
+*lab environment to test stuff on a running code base
 
 ## How to build this project
 

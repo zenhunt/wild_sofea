@@ -1,29 +1,27 @@
 <h1>Address book</h1>
 <p>This is a little address book. Search, find, add, edit and delete people as you like.</p>
 <form address-filter></form>
-<section id="result">
-    <table ng-controller="listController">
-        <caption><h2>Your addresses</h2></caption>
-        <thead>
-            <tr>
-                <th><input type="checkbox" ng-click="selectAll()" ng-checked="allSelected()"></th>
-                <th ng-click="predicate = 'forename'; reverse = !reverse">First Name</th>
-                <th ng-click="predicate = 'lastname'; reverse = !reverse">Last Name</th>
-                <th ng-click="predicate = 'country'; reverse = !reverse">Address</th>
-                <th ng-click="predicate = 'group'; reverse = !reverse">Group</th>
-                <th class="last-child"><button ng-class="{'icon-cancel': adding, 'icon-add': !adding}" ng-click="toggleAdd()"><div></div></button><button class="icon-delete" ng-click="delete()"><div></div></button></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr address-details ng-if="adding" addr="toAdd" add="true" on-save="add()"></tr>
-            <tr address-summary ng-repeat-start="addr in getAddresses() | orderBy:predicate:reverse track by addr.id"></tr>
-            <tr address-details ng-repeat-end ng-if="addr.details" ng-animate="toggle-details" addr="addr" delete="delete(addr.id)"></tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="1">< ></td>
-                <td colspan="5" class="last-child">{{getAddresses().length}} of {{totalCount()}} Addresses</td>
-            </tr>
-        </tfoot>
-    </table>
-</section>
+<table ng-controller="listController">
+    <caption><h2>Your addresses</h2></caption>
+    <thead>
+        <tr>
+            <th><input type="checkbox" ng-click="selectAll()" ng-checked="allSelected()"></th>
+            <th ng-click="predicate = 'forename'; reverse = !reverse">First Name</th>
+            <th ng-click="predicate = 'lastname'; reverse = !reverse">Last Name</th>
+            <th ng-click="predicate = 'country'; reverse = !reverse">Address</th>
+            <th ng-click="predicate = 'group'; reverse = !reverse">Group</th>
+            <th class="last-child"><button ng-class="{'icon-cancel': adding, 'icon-add': !adding}" ng-click="toggleAdd()"><div></div></button><button class="icon-delete" ng-click="delete()"><div></div></button></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr address-details ng-if="adding" addr="toAdd" add="true" on-save="add()"></tr>
+        <tr address-summary ng-repeat-start="addr in getAddresses() | orderBy:predicate:reverse track by addr.id"></tr>
+        <tr address-details ng-repeat-end ng-if="addr.details" ng-animate="toggle-details" addr="addr" delete="delete(addr.id)"></tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="1">< ></td>
+            <td colspan="5" class="last-child">{{getAddresses().length}} of {{totalCount()}} Addresses</td>
+        </tr>
+    </tfoot>
+</table>

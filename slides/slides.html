@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script lang="javascript" src="reveal.min.js"></script>
+    <title>SOFEA in the wild</title>
+</head>
+<body>
+<div class="slides">
+    <section>
+        <h1>Sofea in the Wild</h1>
+    </section>
+    <section>
+        <h2 data-fragment-index="0">outline</h2>
+        <div data-fragment-index="1">What is SOFEA?</div>
+        <div data-fragment-index="2">The demo app<br>HTML5<br>LESS CSS and CSS3<br>Modernizr<br></div>
+        <div data-fragment-index="3">Coffeescript</div>
+        <div data-fragment-index="4">Node + NPM</div>
+        <div data-fragment-index="5">Grunt.js</div>
+        <div data-fragment-index="8">Angular.js</div>
+        <div data-fragment-index="9">BDD with Karma + Jasmine</div>
+    </section>
+    <section>
+        <h2>SOFEA</h2>
+        <div class="fragment" data-fragment-index="4">Service Oriented Front End Architecture</div>
+        <div class="fragment" data-fragment-index="5">Thin Server Architecture</div>
+        <div class="fragment" data-fragment-index="6">No server side rendering</div>
+        <div class="fragment" data-fragment-index="7">Application as static content</div>
+        <div class="fragment" data-fragment-index="8">excessive XHR-Communication (ajax anyone?)</div>
+        <div class="fragment" data-fragment-index="9">Javascript based applications</div>
+    </section>
+    <section>
+        <h2>Demo App Requirements</h2>
+        <p data-fragment-index="0" class="fragment">small<br>highly maintainable code base<br>html, css and javascript as bleeding edge as possible<br>Internet Exploder compatible down to version 8<br>cross browser code only on css level, if possible<br>slick as hell &gt;:)<br>collection of best practices<br>lab environment to test stuff on a running code base<br>
+        </p>
+    </section>
+    <section>
+        <h2>HTML5</h2>
+        <p data-fragment-index="0" class="fragment">Document base structure</p>
+        <p data-fragment-index="1" class="fragment">Semantic elements and meta tags</p>
+        <p data-fragment-index="2" class="fragment">WTF! How should i use this?</p>
+        <p data-fragment-index="3" class="fragment">Read, think, understand and then implement</p>
+        <p data-fragment-index="4" class="fragment">Observe the net!<br>
+        </p>
+        <p data-fragment-index="5" class="fragment">Old browsers hacks<br>
+        </p>
+    </section>
+    <section>
+        <h2>LESS CSS and CSS3<br>
+        </h2>
+        <p data-fragment-index="0" class="fragment">Meta language on top of css</p>
+        <p data-fragment-index="1" class="fragment">Hierarchical css?!</p>
+        <p data-fragment-index="2" class="fragment">Compile time variables<br>
+        </p>
+        <p data-fragment-index="3" class="fragment">Color calculations</p>
+        <p data-fragment-index="4" class="fragment">Mixin functions</p>
+        <p data-fragment-index="5" class="fragment">What about cross browser css?<br>
+        </p>
+    </section>
+    <section>
+        <h2>Modernizr<br>
+        </h2>
+        <p data-fragment-index="0" class="fragment">Just include javascript and all is fine?</p>
+        <p data-fragment-index="1" class="fragment">Analyser results as css classes</p>
+        <p data-fragment-index="2" class="fragment">h5shiv<br>
+        </p>
+        <p data-fragment-index="3" class="fragment">combination with less?</p>
+        <p data-fragment-index="4" class="fragment">IE8 Demo!</p>
+        <p data-fragment-index="5" class="fragment">Evils H@XX0R stuff... &gt;[B-|]<br>
+        </p>
+    </section>
+    <section>
+        <h2>CoffeeScript</h2>
+        <div class="fragment" data-fragment-index="0">JavaScript alternative</div>
+        <div class="fragment" data-fragment-index="1">Cross-Compilation through JS to JS</div>
+        <div class="fragment" data-fragment-index="2">more concise</div>
+        <div>
+            <br>
+        </div>
+        <div class="fragment" data-fragment-index="4">
+            <a href="http://coffeescript.org/">http://coffeescript.org/</a>
+            <br>
+        </div>
+        <div class="fragment" data-fragment-index="5">
+            <a href="http://js2coffee.org/">http://js2coffee.org/</a>
+            <br>
+        </div>
+
+    </section>
+    <section>
+        <h2>Node + NPM</h2>
+        <div class="fragment" data-fragment-index="0">Node: JavaScript webserver</div>
+        <div class="fragment" data-fragment-index="1">good at processing static content</div>
+        <div>
+            <br>
+        </div>
+        <div class="fragment" data-fragment-index="2">
+            <a href="http://nodejs.org/">http://nodejs.org/</a>
+            <br>
+        </div>
+        <div>
+            <br>
+        </div>
+        <div class="fragment" data-fragment-index="3">NPM: dependency management</div>
+        <div class="fragment" data-fragment-index="4">huge amount of plugins (about 48.000<span>)</span>
+        </div>
+        <div>
+            <br>
+        </div>
+        <div class="fragment" data-fragment-index="5">
+            <a href="https://npmjs.org/">https://npmjs.org/</a>
+            <br>
+        </div>
+    </section>
+    <section>
+        <h2>grunt.js</h2>
+        <div class="fragment" data-fragment-index="0">JavaScript Task-Runner</div>
+        <div class="fragment" data-fragment-index="1">about 1.800 Plugins</div>
+        <div class="fragment" data-fragment-index="2">Configuration in JS or CoffeeScript</div>
+        <div>
+            <br>
+        </div>
+        <div class="fragment" data-fragment-index="3">
+            <a href="http://gruntjs.com/">http://gruntjs.com</a>
+        </div>
+    </section>
+    <section>
+        <section>
+            <h2>Angular.js</h2>
+            <div class="fragment" data-fragment-index="0">JS-MVC for the client</div>
+            <div class="fragment" data-fragment-index="1">
+                <img src="http://gaboesquivel.com/slides/intro-to-angularjs/img/angular-architecture.png" style="width: 406.63px; height: 407.727px; max-height: none; max-width: none;">
+            </div>
+            <div class="fragment" data-fragment-index="1">
+                <font style="font-size: 24px;">(<a href="http://gaboesquivel.com/slides/intro-to-angularjs/img/angular-architecture.png">http://gaboesquivel.com/slides/intro-to-angularjs/img/angular-architecture.png</a>)</font>
+                <br>
+            </div>
+
+        </section>
+        <section>
+            <h2>angular.js - Features</h2>
+            <div class="fragment" data-fragment-index="0">MVC/MVVM -&gt; Separation of concerns</div>
+            <div class="fragment" data-fragment-index="1">Dependency Injection</div>
+            <div class="fragment" data-fragment-index="2">two-way data binding (Good bye, events!)</div>
+            <div class="fragment" data-fragment-index="3">direct integration of jQuery (if wanted/needed)</div>
+            <div class="fragment" data-fragment-index="4">declarative style through directives</div>
+            <div class="fragment" data-fragment-index="5">deep linking</div>
+            <div class="fragment" data-fragment-index="6">animations</div>
+            <div class="fragment" data-fragment-index="7">...</div>
+            <div class="fragment" data-fragment-index="7">
+                <a href="http://angularjs.org/">http://angularjs.org/</a>
+                <br>
+            </div>
+        </section>
+    </section>
+    <section>
+        <h2>BDD with Karma + Jasmine</h2>
+        <div class="fragment" data-fragment-index="0">Karma: JS Test-Runner</div>
+        <div class="fragment" data-fragment-index="1">auto-watch</div>
+        <div class="fragment" data-fragment-index="2">Coffeescript preprocessor</div>
+        <div>
+            <br>
+        </div>
+        <div class="fragment" data-fragment-index="3">
+            <a href="http://karma-runner.github.io/">http://karma-runner.github.io</a>
+            <br>
+        </div>
+        <div>
+            <br>
+        </div>
+        <div class="fragment" data-fragment-index="4">Jasmine: JS Testing framework</div>
+        <div class="fragment" data-fragment-index="5">BDD-Style (human readable)</div>
+        <div>
+            <br>
+        </div>
+        <div class="fragment" data-fragment-index="6">
+            <a href="http://pivotal.github.io/jasmine/">http://pivotal.github.io/jasmine/</a>
+            <br>
+        </div>
+    </section>
+</div>
+</body>
+</html>
