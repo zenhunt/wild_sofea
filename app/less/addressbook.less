@@ -72,7 +72,7 @@ input {
   padding: 1px 5px;
   margin: 0 0 0 5px;
   &.ng-invalid {
-    box-shadow: 0 0 7px red;
+    outline: red;
   }
 }
 
@@ -84,7 +84,7 @@ select {
   margin-left: 5px;
   padding: 0;
   &.ng-invalid {
-    box-shadow: 0 0 7px red;
+   outline: red;
   }
 
   // bye bye ugly arrow :P
@@ -154,6 +154,11 @@ nav {
   a {
     padding: 0 10px;
     text-decoration: none;
+    color: lighten(@basecolor, 60%);
+
+    &.active {
+      color: lighten(@basecolor, 50%);
+    }
   }
 }
 
