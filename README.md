@@ -5,25 +5,25 @@ S.O.F.E.A. in the wild - A demo for a single page app using html5, lesscss, angu
 
 ## Preconditions and targets
 
-*small
-*highly maintainable code base
-*html, css and javascript as bleeding edge as possible
-*Internet Exploder compatible down to version 8
-*cross browser code only on css level, if possible
-*slick as hell >:)
-*collection of best practices
-*lab environment to test stuff on a running code base
+* small
+* highly maintainable code base
+* html, css and javascript as bleeding edge as possible
+* Internet Exploder compatible down to version 8
+* cross browser code only on css level, if possible
+* slick as hell >:)
+* collection of best practices
+* lab environment to test stuff on a running code base
 
 ## How to build this project
 
 Make sure you have installed [node.js](http://nodejs.org) and [grunt.js](http://gruntjs.com/).
 Install grunt.jd:
 
-    `npm install -g grunt-cli`
+    npm install -g grunt-cli
 
 Now you can install all project dependencies. Run the following command in the project root:
 
-    `npm install`
+    npm install
 
 Now you can execute the configured grunt tasks. The most important tasks are:
 
