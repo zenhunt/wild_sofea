@@ -12,3 +12,5 @@ app.get '*', (req, res) ->
   res.sendfile "dist#{req.path}"
 
 app.listen 9998
+
+console.log 'The demo application is now listening on http://localhost:9998'

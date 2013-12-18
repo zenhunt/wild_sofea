@@ -10,23 +10,13 @@ module.exports = function(config) {
             'app/lib/jquery/jquery.js',
             'app/lib/angular/angular.js',
             'app/lib/angular-mocks/angular-mocks.js',
-            'app/templates/**/*.html',
             'app/scripts/main.coffee',
             'app/scripts/**/*.coffee',
             'test/**/*.coffee'
         ],
 
         preprocessors: {
-            'app/templates/**/*.html': ['ng-html2js'],
             '**/*.coffee': ['coffee']
-        },
-
-        ngHtml2JsPreprocessor: {
-            // strip this from the file path
-            stripPrefix: 'app/',
-            // setting this option will create only a single module that contains templates
-            // from all the files, so you can load them all with module('foo')
-            moduleName: 'templates'
         },
 
         coffeePreprocessor: {

@@ -19,7 +19,7 @@ module.exports = (grunt) ->
     'backend-mock/**/*.json'
   ]
 
-  lessSources = 'less/**/*'
+  lessSources = 'styles/**/*.less'
   coffeeSources = 'scripts/**/*.coffee'
 
   grunt.initConfig
@@ -34,15 +34,14 @@ module.exports = (grunt) ->
       dev:
         options:
           sourceMap: true
-          sourceMapRootpath: '../'
-          sourceMapBasepath: '.tmp/'
+          sourceMapBasepath: '.tmp/styles'
         files:
-          ".tmp/css/addressbook.css": ".tmp/less/addressbook.less"
+          ".tmp/styles/addressbook.css": ".tmp/styles/addressbook.less"
       dist:
         options:
           compress: true
         files:
-          "dist/css/addressbook.min.css": "app/less/addressbook.less"
+          "dist/styles/addressbook.min.css": "app/styles/addressbook.less"
 
     coffee:
       dev:
@@ -51,7 +50,7 @@ module.exports = (grunt) ->
         expand: true
         cwd: '.tmp/scripts'
         src: '**/*.coffee'
-        dest: '.tmp/js'
+        dest: '.tmp/scripts'
         ext: '.js'
       dist:
         files:
@@ -79,7 +78,7 @@ module.exports = (grunt) ->
         '<%= grunt.template.today("yyyy-mm-dd") %> */'
       dist:
         files:
-          'dist/js/app.min.js': jsDependencies.map((dep) -> "app/#{dep}").concat ['main.js']
+          'dist/scripts/app.min.js': jsDependencies.map((dep) -> "app/#{dep}").concat ['main.js']
 
     watch:
       less:
@@ -92,30 +91,30 @@ module.exports = (grunt) ->
         files: devCopySources.map (src) -> "app/#{src}"
         tasks: ['copy:dev']
       htmlbuild:
-        files: ['app/app.html']
+        files: ['app/index.html']
         tasks: ['htmlbuild:dev']
       options:
         livereload: true
 
     htmlbuild:
       dev:
-        src: 'app/app.html'
-        dest: '.tmp/app.html'
+        src: 'app/index.html'
+        dest: '.tmp/index.html'
         options:
           relative: true
           scripts:
-            main: jsDependencies.map((dep) -> ".tmp/#{dep}").concat ['.tmp/js/main.js', '.tmp/js/**/*.js']
+            main: jsDependencies.map((dep) -> ".tmp/#{dep}").concat ['.tmp/scripts/main.js', '.tmp/scripts/**/*.js']
           styles:
-            main: '.tmp/css/addressbook.css'
+            main: '.tmp/styles/addressbook.css'
       dist:
-        src: 'app/app.html'
+        src: 'app/index.html'
         dest: 'dist'
         options:
           relative: true
           scripts:
-            main: 'dist/js/app.min.js'
+            main: 'dist/scripts/app.min.js'
           styles:
-            main: 'dist/css/addressbook.min.css'
+            main: 'dist/styles/addressbook.min.css'
 
     copy:
       dev:

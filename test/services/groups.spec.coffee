@@ -20,7 +20,7 @@ describe 'groups', ->
 
       expect(groups.all).not.toBeDefined()
       $httpBackend.flush()
-      expect(groups.all).toBe allGroups
+      expect(groups.all).toEqual allGroups
 
     it 'should initialize the selectable groups with all retrieved groups except the first one', ->
       groups.loadAll()

@@ -18,7 +18,7 @@ describe 'countries', ->
 
     expect(countries.all).not.toBeDefined()
     $httpBackend.flush()
-    expect(countries.all).toBe allCountries
+    expect(countries.all).toEqual allCountries
 
   it 'should initialize the selectable countries with all retrieved countries except the first one', ->
     countries.loadAll()
