@@ -151,6 +151,16 @@ module.exports = (grunt) ->
         command: ->
           "git push --tags"
 
+    compress:
+      dist:
+        options:
+          archive: 'wild_sofea.zip'
+        files: [
+          expand: true
+          src: ['**/*']
+          cwd: 'dist/'
+        ]
+
     connect:
       dev:
         options:
@@ -176,12 +186,13 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-clean'
   grunt.loadNpmTasks 'grunt-shell'
   grunt.loadNpmTasks 'grunt-contrib-connect'
+  grunt.loadNpmTasks 'grunt-contrib-compress'
 
   grunt.registerTask 'copy_dev', ['copy:dev', 'copy:dev_less', 'copy:dev_coffee']
   grunt.registerTask 'compile_dev', ['coffee:dev', 'less:dev', 'htmlbuild:dev']
   grunt.registerTask 'compile_dist', ['coffee:dist', 'less:dist', 'uglify', 'htmlbuild:dist', 'clean:dist']
   grunt.registerTask 'dev', ['bower', 'copy_dev', 'compile_dev', 'connect:dev', 'watch']
   grunt.registerTask 'test', ['karma:dev']
-  grunt.registerTask 'dist', ['bower', 'compile_dist', 'copy:dist']
+  grunt.registerTask 'dist', ['bower', 'compile_dist', 'copy:dist', 'compress:dist']
   grunt.registerTask 'ci', ['dist','karma:ci','shell:git_tag','shell:git_push_tag']
   grunt.registerTask 'local-ci', ['bower', 'karma:ci']
