@@ -184,4 +184,4 @@ module.exports = (grunt) ->
   grunt.registerTask 'test', ['karma:dev']
   grunt.registerTask 'dist', ['bower', 'compile_dist', 'copy:dist']
   grunt.registerTask 'ci', ['dist','karma:ci','shell:git_tag','shell:git_push_tag']
-  grunt.registerTask 'local-ci', ['karma:ci']
+  grunt.registerTask 'local-ci', ['bower', 'karma:ci']
