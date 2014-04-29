@@ -7,7 +7,7 @@ dist
 .tmp
 app/lib
 test-results.xml
-
+wild_sofea.zip
 
 # dependencies
 bower_components
