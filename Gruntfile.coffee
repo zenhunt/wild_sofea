@@ -136,7 +136,7 @@ module.exports = (grunt) ->
       dist:
         expand: true
         cwd: 'app'
-        src: ['fonts/*', 'img/*', 'views/**/*', 'templates/**/*']
+        src: ['fonts/*', 'views/**/*', 'templates/**/*']
         dest: 'dist'
 
     clean:
@@ -159,6 +159,16 @@ module.exports = (grunt) ->
           expand: true
           src: ['**/*']
           cwd: 'dist/'
+        ]
+    imagemin:
+      dist:
+        options:
+          optimizationLevel: 3
+        files: [
+          expand: true
+          cwd: "app/"
+          src: ["img/*"]
+          dest: "dist"
         ]
 
     connect:
@@ -187,12 +197,13 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-shell'
   grunt.loadNpmTasks 'grunt-contrib-connect'
   grunt.loadNpmTasks 'grunt-contrib-compress'
+  grunt.loadNpmTasks 'grunt-contrib-imagemin'
 
   grunt.registerTask 'copy_dev', ['copy:dev', 'copy:dev_less', 'copy:dev_coffee']
   grunt.registerTask 'compile_dev', ['coffee:dev', 'less:dev', 'htmlbuild:dev']
   grunt.registerTask 'compile_dist', ['coffee:dist', 'less:dist', 'uglify', 'htmlbuild:dist', 'clean:dist']
   grunt.registerTask 'dev', ['bower', 'copy_dev', 'compile_dev', 'connect:dev', 'watch']
   grunt.registerTask 'test', ['karma:dev']
-  grunt.registerTask 'dist', ['bower', 'compile_dist', 'copy:dist', 'compress:dist']
+  grunt.registerTask 'dist', ['bower', 'compile_dist', 'copy:dist', 'imagemin', 'compress:dist']
   grunt.registerTask 'ci', ['dist','karma:ci','shell:git_tag','shell:git_push_tag']
   grunt.registerTask 'local-ci', ['bower', 'karma:ci']
